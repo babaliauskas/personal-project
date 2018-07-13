@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One');
+.login {
+    background-image: url(./img/hmm.jpg);
+    height: 100vh;
+    background-position: top;
+}
+
+.button {
+    font-family: 'Fredoka One', cursive;
+    font-size: 25px;
+    font-weight: bold;
+    color: rgba(212, 211, 211, 0.932);
+    padding: 15px 30px;
+    text-transform: uppercase;
+    margin-top: 500px;
+    border-radius: 50%;
+    background-color: rgba(12, 71, 22, 0.795);
+    cursor: pointer;
+    box-shadow: 2px 3px 3px black;
+    border: 3px solid rgb(0, 39, 3);
+    letter-spacing: 5px
+}
+
+.button:hover {
+    color: rgb(235, 235, 235);
+    background-color: rgba(37, 196, 66, 0.795);
+    transition: 0.5s
+}
+.button:focus {
+    outline: none;
+  }

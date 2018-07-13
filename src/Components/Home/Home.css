@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+.home {
+    background-image: url(../../img/bla.png);
+    width: 100vw;
+    height: 100vh;
+    background-position: 0 0;
+    background-size: cover;
+}
+
+
+.images { animation: fadein 2s }
+
+@keyframes fadein {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+
+.dino1 {
+    position: absolute;
+    top: 22%;
+    left: 44%;
+}
+
+.dino2 {
+    position: absolute;
+    top: 33%;
+    left: 25%;
+}
+
+.dino16 {
+    position: absolute;
+    bottom: 20%;
+    left: 53%;
+}
+
+.dino4 {
+    position: absolute;
+    bottom: 40%;
+    left: 40%;
+}
+
+.dino5 {
+    position: absolute;
+    bottom: 15%;
+    right: 17%;
+}
+
+.dino8 {
+    position: absolute;
+    top: 30%;
+    right: 39%;
+}
+
+.dino18 {
+    position: absolute;
+    bottom: 42%;
+    right: 35%;
+}
+
+.dino17 {
+    position: absolute;
+    bottom: 43%;
+    right: 48%;
+}
+
+.img {
+    animation: bounce .5s infinite alternate;
+    -webkit-animation: bounce .5s infinite alternate;
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgb(168, 168, 168);
+    border-radius: 50px;
+    box-shadow: 0px 0px 20px 20px rgba(41, 41, 41, 0.712);
+}
+
+.egg {
+    width: 100px;
+    height: auto;
+    position: absolute;
+    right: 100px;
+    bottom: 40px;
+    animation: shake 0.8s infinite cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    cursor: pointer;
+    display: block
+}
+
+.egg-none {
+    display: none;
+}
+
+.egg2 {
+    width: 100px;
+    height: auto;
+    position: absolute;
+    right: 100px;
+    bottom: 40px;
+    display: none;
+}
+.egg2-show {
+    width: 100px;
+    height: auto;
+    position: absolute;
+    right: 100px;
+    bottom: 40px;
+    display: block;
+    animation: fadein 2s
+}
+
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-15px);
+  }
+}
+
+@-webkit-keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-15px);
+  }
+}
+

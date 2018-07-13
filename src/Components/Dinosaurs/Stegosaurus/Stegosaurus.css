@@ -1,0 +1,63 @@
+/* .miniinfo {
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../../../img/bla.png);
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    position: fixed;
+    position: relative;
+}
+
+.miniinfo-div {
+    background-color: rgb(76, 146, 44);
+    width: 600px;
+    height: 430px;
+    margin: 0 auto;
+    border-radius: 20px;
+    border: 2px solid rgb(38, 131, 14);
+    box-shadow: 2px 2px 5px rgb(0, 0, 0);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: fadein 2s;
+}
+
+span {
+    width: 40px;
+    position: relative;
+    color: rgb(126, 2, 2);
+    font-size: 20px;
+    margin: 25px;
+    border: 1px solid rgb(126, 2, 2);
+    padding: 5px;
+    border-radius: 10px;
+    font-weight: bold;
+    outline: none;
+    float: right;
+}
+.miniinfo-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    align-content: center;
+}
+
+.miniinfo-btn button {
+    position: absolute;
+    bottom: 40px;
+    color: rgb(43, 110, 5);
+    width: 200px;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px black;
+    background-color: rgb(245, 201, 4);
+    border: 1px solid rgb(180, 154, 2);
+    margin-left: 80px; 
+    font-family: 'Song Myung', serif;
+}
+
+.miniinfo-img {
+    width: 150px;
+    height: auto;
+} */
