@@ -58,9 +58,7 @@ class Navigation extends Component {
   testDayOfWeek(index=0) {
     let d = new Date();
     let n = d.getDay();
-  
     let dayName = this.dayOfWeek(n+index);
-    // this.setState({ days: dayName })
     return dayName;
   }
 
@@ -75,20 +73,16 @@ class Navigation extends Component {
 
   toggleWeather = () => {
     this.setState({ weather: !this.state.weather })
-    console.log(this.state.weather)
   }
 
   getWeather = async (e) => {
     e.preventDefault();
     const api_call = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Barcelona,ES&appid=${API_KEY}`)
     const data = await api_call.json();
-    // console.log(data)
     this.testDayOfWeek();
     this.setState({list: data.list})
 }
   render() {
-
-    console.log(this.state.list)
 
     let neaw = this.state.list.filter( (e, i) => i===0 || i === 7 || i===15 || i===23 || i===31 || i===39)
 
@@ -104,14 +98,12 @@ class Navigation extends Component {
         let daysss = this.testDayOfWeek(i);
         return (
           <div key={i} >
-            {/* <h4>{this.state.days}</h4> */} <h4 className='days'>{daysss}</h4>
+            <h4 className='days'>{daysss}</h4>
             <img className='weather-image' src={picture} alt=""/>
             <h1 className='blaa'>{Math.round(e.main.temp - 273.15)} C</h1>
           </div>
         )
     })
-
-    console.log(this.state.list)
     return (
       <div className="Navigation">
         <header>

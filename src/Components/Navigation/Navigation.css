@@ -95,6 +95,7 @@ a {
 }
 
 .nav-weather-list-show {
+  position: relative;
   height: 120px;
   overflow: hidden;
   transition: 0.4s height ease-out;

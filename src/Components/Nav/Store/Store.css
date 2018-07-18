@@ -1,0 +1,40 @@
+
+.store-main {
+    width: 80%;
+    margin: auto;
+}
+
+.store {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 30px;
+ 
+}
+
+.store-img {
+    width: 200px;
+    height: 230px;
+}
+
+.store-display {
+    margin: 20px;
+}
+
+.store-select select {
+    margin-top: 20px;
+    padding: 7px;
+    font-size: 18px;
+    outline: none;
+}
+
+.store-price {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.store-btn {
+    padding: 5px;
+    border-radius: 5px;
+    outline: none;
+}

@@ -1,21 +1,75 @@
-let initialState = {
-    user: {}
-}
 
-const USER_DATA = 'USER_DATA'
+
+const initialState = {
+    user: {},
+    cart: [],
+    total: [],
+  };
+
+  const QUANTITY = 'QUANTITY'
+  const TOTAL = 'TOTAL'
+  const CART = 'CART';
+  const LOGIN = "LOGIN";
+  const ADD_ITEM = 'ADD_ITEM';
+  const DELETE_ITEM = 'DELETE_ITEM';
 
 export default function reducer(state=initialState, action) {
     switch (action.type) {
-        case USER_DATA:
-            return Object.assign({}, state, {user: action.payload})
+        case LOGIN:
+            return Object.assign({}, state, { user: action.payload });
+        case ADD_ITEM:
+            return Object.assign({}, state, {cart: action.payload });
+        case DELETE_ITEM:
+            return Object.assign({}, state, {cart: action.payload});
+        case CART:
+            return Object.assign({}, state, {cart: action.payload});
+        case TOTAL:
+            return Object.assign({}, state, {total: action.payload})
+        case QUANTITY:
+            return Object.assign({}, state, {cart: action.payload});
         default:
             return state
     }
 }
 
-export function getUserData(user){
+export function login(user ) {
     return {
-        type: USER_DATA,
-        payload: user
+      type: LOGIN,
+      payload: user
+    };
+}
+
+export function addItem(item) {
+    return {
+        type: ADD_ITEM,
+        payload: item,
+    }
+}
+
+export function deleteItem(dlt) {
+    return {
+        type: DELETE_ITEM,
+        payload: dlt
+    }
+}
+
+export function getCart(list) {
+    return {
+        type: CART,
+        payload: list
+    }
+}
+
+export function total(num) {
+    return {
+        type: TOTAL,
+        payload: num
+    }
+}
+
+export function quantity(qtn) {
+    return {
+        type: QUANTITY,
+        payload: qtn
     }
 }

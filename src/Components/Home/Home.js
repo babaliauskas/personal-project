@@ -39,7 +39,7 @@ export default class Home extends React.Component {
                 <Link to='/allosaurus'><img className='dino16 img' src={dino16} alt="Allosaurus"/> </Link>
                 <Link to='/anchiceratops'><img className='dino17 img' src={dino17} alt="Anchiceratops"/> </Link>
                 <Link to='/minmi'><img className='dino18 img' src={dino18} alt="Minmi"/> </Link>
-                <button ><img onClick={this.handleEgg} className={this.state.egg ? 'egg' : 'egg-none'} src={egg} alt=""/></button>
+                <img onClick={this.handleEgg} className={this.state.egg ? 'egg' : 'egg-none'} src={egg} alt=""/>
                 <img className={this.state.egg ? 'egg2' : 'egg2-show'} src={egg2} alt=""/>
             </section>
         </div>

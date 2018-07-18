@@ -1,13 +1,17 @@
 const express = require("express"),
     axios = require('axios'),
     massive= require('massive'),      
+    bodyParser = require('body-parser'),
     session = require('express-session'),
-    dinoCtrl = require('./dinosaurs_controller');
+    dinoCtrl = require('./controllers/dinosaurs_controller'),
+    cart = require('./controllers/cart');
+
 
 require('dotenv').config();
 
-const app = express();
 
+const app = express();
+app.use(bodyParser.json());
 let = { 
     SERVER_PORT, 
     REACT_APP_CLIENT_ID, 
@@ -29,7 +33,6 @@ massive(CONNECTION_STRING).then(db => {
 
 
 
-
 app.get('/auth/callback', async (req, res) => {
     let payload = {
         client_id: REACT_APP_CLIENT_ID,
@@ -43,7 +46,7 @@ app.get('/auth/callback', async (req, res) => {
 
     let userData = await axios.get(`https://${REACT_APP_DOMAIN}/userinfo?access_token=${responseWithToken.data.access_token}`);
     
-    let {sub, name, picture} = userData.data;  
+    let {sub, name} = userData.data;  
 
     const db = req.app.get('db');
 
@@ -52,7 +55,7 @@ app.get('/auth/callback', async (req, res) => {
          req.session.user = userExists[0];
          res.redirect('http://localhost:3000/#/home')
      } else {
-         db.create_user([sub, name, picture]).then( createdUser => {
+         db.create_user([sub, name]).then( createdUser => {
             req.session.user = createdUser[0];
             res.redirect('http://localhost:3000/#/home')
          })
@@ -74,6 +77,12 @@ app.get('/api/logout', (req, res) => {
 })
 
 app.get('/api/miniinfo', dinoCtrl.get);
-
+app.get('/api/store', dinoCtrl.getStore);
+app.get('/api/store/:item', dinoCtrl.getHats);
+app.post('/api/cart', cart.add);
+app.get('/api/cartget', cart.get);
+app.delete('/api/cart/:id/:cartid', cart.delete);
+app.post('/api/cart/:id/:quantity', cart.update);
 
 app.listen(SERVER_PORT, () => console.log(`Listening on ${SERVER_PORT}`))
+
