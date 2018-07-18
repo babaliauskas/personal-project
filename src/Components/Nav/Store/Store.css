@@ -1,6 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Song+Myung');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: 'Song Myung', serif; 
+}
+
+.hm {
+    background-image: linear-gradient( rgba(0, 0, 0, 0.678), rgba(0, 0, 0, 0.678) ), url(../../../img/bla.png);
+    background-size: cover;
+    min-height: 100vh;
+    height: 100%;
+}
 
 .store-main {
-    width: 80%;
+    width: 85%;
     margin: auto;
 }
 
@@ -8,33 +23,88 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 30px;
- 
+    margin: 30px auto;
+    width: 85%;
+    background-color: #fff;
+    animation: fadein 1s;
+    border-radius: 5px;
 }
 
+
+
 .store-img {
-    width: 200px;
-    height: 230px;
+    width: 150px;
+    height: 160px;
 }
 
 .store-display {
     margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 20px;
 }
 
 .store-select select {
     margin-top: 20px;
     padding: 7px;
-    font-size: 18px;
+    font-size: 16px;
     outline: none;
+    background-color: rgb(221, 221, 221);
 }
 
-.store-price {
-    margin-top: 20px;
-    margin-bottom: 20px;
+.store-was {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-decoration: line-through;
+    color: rgb(223, 53, 53)
 }
 
 .store-btn {
-    padding: 5px;
+    padding: 7px;
     border-radius: 5px;
     outline: none;
+    background-color: rgb(3, 129, 10);
+    color: white
+}
+
+.store-display-1 {
+    margin-left: 10px;
+}
+
+.store-now {
+    color: rgb(10, 141, 10)
+}
+
+.div-star {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    transform: rotateZ(350deg)
+}
+
+.div-star h5 {
+    position: absolute;
+    top: 100px;
+    right: 100px;
+    font-size: 20px;
+}
+
+.div-star h4 {
+    position: absolute;
+    top: 130px;
+    right: 110px;
+    font-size: 24px;
+}
+
+.star {
+    width: 300px;
+    height: 250px;
+    animation: fadein 1s;
+    z-index: 9999;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }

@@ -10,7 +10,8 @@ class Cart extends React.Component {
     constructor(){
         super()
         this.state = {
-            list:[]
+            list:[],
+            show: false
         }
     }
 
@@ -46,27 +47,20 @@ class Cart extends React.Component {
                 console.log(product.quantity)
                 
                 return (
-                    <div key={product.id}>
-                        <table className='cart-table'>
-                            <tbody>
-                                <tr>
-                                    <td><img className='cart-img' src={product.img} alt=""/></td>
-                                    <td> <h4>{product.price}</h4></td>
-
-                                    <td><input defaultValue={product.quantity} type="number" onChange={(e)=> this.handleQuant(product.id, e.target.value)}/></td> 
-
-                                    <td><button onClick={() => this.handleDeleteItem(product.id, product.cart_id)}>REMOVE</button></td>
-                                    <td> <p>{product.price * product.quantity}</p> </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div key={product.id} className='items' >
+                        <img className='cart-img' src={product.img} alt=""/>
+                        <h4>${ (product.price * 0.8).toFixed(2) }</h4>
+                        <input className='cart-input' defaultValue={product.quantity} type="number" onChange={(e)=> this.handleQuant(product.id, e.target.value)}/> 
+                        <h4 className='render-total' >${((product.price * product.quantity) * 0.8).toFixed(2)}</h4> 
+                        <button className='cart-remove' onClick={() => this.handleDeleteItem(product.id, product.cart_id)}>REMOVE</button>
                     </div>
                 )
-        })
-
+            })
         return (
-            <div>
+            <div className='cart'>
             <Navigation/>
+
+            <div className='cart-div'>
 
             <div className='cart-top'>
                 <h3>Here's What You're Getting!</h3>
@@ -84,26 +78,32 @@ class Cart extends React.Component {
                 ?
 
             <div>
-                <h3 className='cart-have'>You Have Something</h3>
-            <div className='cart-div-table'> 
-                <table className='cart-table'>
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                </table>
+                <div className='cart-have'>
+                    <h2>You Have Something!</h2>
+                    <div className='cart-total'>
+                        <h3>Total: ${(summm * 0.8).toFixed(2)}</h3>
+                        <button>Proceed</button>
+                    </div>
+                </div>
+            <div className='cart-head'> 
+                <h3>Item</h3>
+                <h3 className='price'>Price</h3>
+                <h3 className='quantity'>Quantity</h3>
+                <h3 className='total' >Total</h3>
+            </div>
+            <div className='line'></div>
+            <div className='show-list'>
                 {list}
             </div>
             </div>
                 :
-            <h1>Your cart is empty!</h1>
+            <h1 className='cart-empty'>Your cart is empty!</h1>
             }
-        
-            <h3>Total: {summm}</h3>
+            </div>
+
+            <div className='proceed-div'>
+                
+                </div>
         </div>
         )
     }

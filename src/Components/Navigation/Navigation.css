@@ -4,6 +4,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+
 }
 
 a {
@@ -27,6 +29,7 @@ a {
   padding: 5px;
   border-radius: 10px;
   cursor: pointer;
+  
 }
 
 .header-menu-bars {

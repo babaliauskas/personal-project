@@ -1,3 +1,20 @@
+.cart {
+        background-image: linear-gradient( rgba(0, 0, 0, 0.678), rgba(0, 0, 0, 0.678) ), url(../../../img/bla.png);
+        background-size: cover;
+        min-height: 100vh;
+        height: 100%;
+}
+
+.cart-div {
+    background-color: #fff;
+    width: 85%;
+    margin: auto;
+    border-radius: 5px;
+    animation: fadein 2s;
+}
+
+
+
 .cart-img {
     width: 100px;
     height: 100px;
@@ -6,6 +23,7 @@
 .cart-top {
     display: flex;
     justify-content: space-around;
+    padding-top: 40px;
     margin-top: 40px;
     margin-bottom: 40px;
 }
@@ -28,20 +46,99 @@
 }
 
 .cart-have {
-    margin-top: 30px;
+    margin-top: 40px;
     display: flex;
+    justify-content: space-between;
     margin-left: 15%;
     align-items: center;
 }
 
-.cart-div-table {
-    margin-top: 50px;
+.cart-total {
+    margin-right: 150px;
 }
 
-.cart-table {
-    margin: 30px auto;
-    width: 90%;
-    border-spacing: 10px;
-    border-collapse: collapse;
-    color: rgb(22, 22, 22);
+.cart-total button {
+    padding:5px;
+    font-size: 16px;
+    width: 150px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: rgb(22, 150, 5);
+    color: #fff;
+    outline: none;
+    box-shadow: 1px 1px 5px black;
+}
+
+.cart-head {
+    display: flex;
+}
+
+.cart-head h3 {
+    position: relative;
+    left: -100px;
+    margin-left: 16%;
+    margin-top: 50px;
+    margin-bottom: -10px;
+}
+
+.cart-head .price {
+    margin-left: 17%;
+}
+
+.cart-head .total {
+    margin-left: 16%;
+}
+
+.render-total {
+    margin-left: 30px;
+}
+
+.items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.cart-input {
+    width: 60px;
+    padding: 6px;
+    outline: none;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between
+}
+
+.cart-remove {
+    padding: 8px;
+    background-color: rgba(238, 44, 44, 0.76);
+    color: white;
+    outline: none;
+    box-shadow: 1px 1px 3px black;
+    border-radius: 5px;
+}
+
+.cart-empty {
+    margin: 30px 0;
+    padding-bottom: 50px;
+}
+
+.show-list{
+    padding-bottom: 80px;
+    margin-bottom: 50px;
+}
+
+.proceed-div {
+    width: 300px;
+    height: 300px;
+    background-color: #fff;
+    margin: auto;
+    border-radius: 5px;
+    margin-bottom: 40px;
+}
+
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }

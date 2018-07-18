@@ -2,8 +2,9 @@ import React from 'react';
 import Navigation from '../../Navigation/Navigation';
 import './Store.css';
 import axios from 'axios';
-import {addItem} from '../../../duck/reducer'
-import {connect} from 'react-redux'
+import {addItem} from '../../../duck/reducer';
+import {connect} from 'react-redux';
+import Star from '../../../img/star.svg.png'
 
 class Store extends React.Component {
     constructor(){
@@ -42,8 +43,11 @@ class Store extends React.Component {
                 <div key={i}>
                     <div className='store-display'>
                        <img className='store-img' src={e.img} alt="img"/>
-                        <h4 className='store-price'>{e.price}$</h4>
-                        <button onClick={() => this.handleAddCart(e.img, e.price)} className='store-btn'>Add to Cart</button>
+                        <div className='store-display-1'>
+                            <h4 className='store-now'>Now ${(e.price * 0.8 ).toFixed(2)}</h4>
+                            <h5 className='store-was'>Was ${e.price}</h5>
+                            <button onClick={() => this.handleAddCart(e.img, e.price)} className='store-btn'>Add to Cart</button>
+                        </div>
                     </div>
                 </div>
             )
@@ -53,10 +57,14 @@ class Store extends React.Component {
         <div className='hm'>
             <Navigation/> 
             <div  className='store-main'>
+
+                <div className='div-star'>
+                    <img className='star' src={Star} alt=""/>
+                    <h5>Only Today</h5>
+                    <h4>20% Off</h4>
+                </div>
                 <div className='store-select'>
-                    <select onChange={(e) => this.handleHats(e.target.value)} ref={selectedItem => {
-          this.selectedItem = selectedItem
-        }} name="" id="">
+                    <select onChange={(e) => this.handleHats(e.target.value)} ref={selectedItem => { this.selectedItem = selectedItem }}>
                         <option value="Filter">Filter</option>
                         <option value="all">All</option>
                         <option value="hat">Hats</option>
