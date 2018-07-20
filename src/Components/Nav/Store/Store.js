@@ -29,7 +29,7 @@ class Store extends React.Component {
 
     handleAddCart = (img, price) => {
         let bla = {img, price}
-        axios.post('/api/cart', bla )
+        axios.put('/api/cart', bla )
         .then(response => {
             this.props.addItem(response.data)
         }).catch(err => console.log(err))

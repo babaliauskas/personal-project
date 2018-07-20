@@ -6,12 +6,22 @@ const express = require("express"),
     session = require('express-session'),
     dinoCtrl = require('./controllers/dinosaurs_controller'),
     cart = require('./controllers/cart'),
-    nodemailer = require('nodemailer')
-    stripe = require('stripe')(process.env.KEY);
+    stripe = require('stripe')(process.env.KEY),
+    nodemailer = require('nodemailer'),
+    busboy = require('connect-busboy'),
+    AWS = require('aws-sdk'),
+    Busboy = require('busboy'),
+    busboyBodyParser = require('busboy-body-parser'),
+    BUCKET_NAME = (process.env.BUCKET_NAME),
+    IAM_USER_KEY = (process.env.IAM_USER_KEY),
+    IAM_USER_SECRET = (process.env.IAM_USER_SECRET);
     
     
     const app = express();
+    app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
+    app.use(busboy());
+    app.use(busboyBodyParser());
 
 
 ///////////         Stripe          ///////////////////
@@ -180,12 +190,65 @@ app.post('/api/form', (req,res) => {
 
 
 
+
 //////////////////////////////////////////////////////////////////////
+
+
+app.post('/api/upload', (req, res) => {
+    const element1 = req.body.element1;
+    var busboy = new Busboy({ headers: req.headers });
+
+    console.log('element1: ')
+    console.log(element1)
+
+    busboy.on('finish', function() {
+        console.log('Upload finished')
+
+        console.log('files: ')
+        console.log(req.files)
+
+    const file = req.files.element2;
+    console.log(file)
+
+    let s3bucket = new AWS.S3({
+        accessKeyId: IAM_USER_KEY,
+        secretAccessKey: IAM_USER_SECRET,
+        Bucket: BUCKET_NAME
+    });
+    s3bucket.createBucket(function() {
+        var params = {
+            Bucket: BUCKET_NAME,
+            Key: file.name,
+            Body: file.data
+        };
+        s3bucket.upload(params, function(err, data) {
+            if(err) {
+                console.log('error in callback')
+                console.log(err)
+            }
+            console.log('success')
+            console.log(data)
+        })
+    })
+    })
+    req.pipe(busboy)
+} )
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////
+
+
+
+
+
 
 app.get('/api/miniinfo', dinoCtrl.get);
 app.get('/api/store', dinoCtrl.getStore);
 app.get('/api/store/:item', dinoCtrl.getHats);
-app.post('/api/cart', cart.add);
+app.put('/api/cart', cart.add);
 app.get('/api/cartget', cart.get);
 app.delete('/api/cart/:id/:cartid', cart.delete);
 app.post('/api/cart/:id/:quantity', cart.update);
