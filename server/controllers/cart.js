@@ -25,6 +25,14 @@ module.exports = {
         .catch(err => console.log(err))
     },
 
+    deleteAll: (req, res) => {
+        const db = req.app.get('db')
+
+        db.empty_dinosaurs_cart()
+        .then(response => res.status(200).send(response))
+        .catch(err => console.log(err))
+    },
+
     update: (req, res) => {
         const db = req.app.get('db')
         const { id, quantity } = req.params

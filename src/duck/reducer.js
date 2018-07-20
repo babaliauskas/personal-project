@@ -6,6 +6,8 @@ const initialState = {
     total: [],
   };
 
+
+  const EMPTY = "EMPTY"
   const QUANTITY = 'QUANTITY'
   const TOTAL = 'TOTAL'
   const CART = 'CART';
@@ -27,6 +29,8 @@ export default function reducer(state=initialState, action) {
             return Object.assign({}, state, {total: action.payload})
         case QUANTITY:
             return Object.assign({}, state, {cart: action.payload});
+        case EMPTY:
+            return Object.assign({}, state, {cart: []}) 
         default:
             return state
     }
@@ -71,5 +75,11 @@ export function quantity(qtn) {
     return {
         type: QUANTITY,
         payload: qtn
+    }
+}
+
+export function empty() {
+    return {
+        type: EMPTY
     }
 }

@@ -1,25 +1,32 @@
 import React from 'react';
 import Navigation from '../../Navigation/Navigation';
 import axios from 'axios';
-import {deleteItem, getCart, total, quantity} from '../../../duck/reducer';
+import {deleteItem, getCart, total, quantity, empty} from '../../../duck/reducer';
 import {connect} from 'react-redux';
 import './Cart.css'
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import Money from '../../../img/money2.png';
+import StripeCheckout from 'react-stripe-checkout';
+
 
 class Cart extends React.Component {
     constructor(){
         super()
         this.state = {
             list:[],
-            show: false
+            show: false,
+            price: 0
         }
+        this.onToken = this.onToken.bind(this);
     }
 
-    componentDidMount = () => {
+    componentDidMount = () => {    
         axios.get('/api/cartget').then(response => {
             this.props.getCart( response.data )
         }).catch(err => console.log(err))
+        
     }
+
 
     handleDeleteItem = (id, cartId) => {
         axios.delete(`/api/cart/${id}/${cartId}`)
@@ -34,6 +41,26 @@ class Cart extends React.Component {
             this.props.quantity(response.data)
         }).catch(err => console.log('Quantity', err))
     }
+
+    handleCheckout = (price) => {
+        this.setState({ show: !this.state.show, price })
+        console.log(this.state.show)
+    }
+
+
+    onToken = (token) => {
+        token.card = void 0;
+        console.log('token', token);
+
+        axios.post('/api/payment', { token, amount: this.state.price } ).then(response => { alert('we are in business')}).then( () => this.props.history.push('store') );
+
+        axios.delete('/api/cart')
+        .then(response => { 
+            this.props.empty(response.data)
+        })
+        .catch(err => console.log(err));
+      }
+      
 
 
         render(){
@@ -60,7 +87,7 @@ class Cart extends React.Component {
             <div className='cart'>
             <Navigation/>
 
-            <div className='cart-div'>
+            <div className='cart-div-hide'>
 
             <div className='cart-top'>
                 <h3>Here's What You're Getting!</h3>
@@ -82,7 +109,7 @@ class Cart extends React.Component {
                     <h2>You Have Something!</h2>
                     <div className='cart-total'>
                         <h3>Total: ${(summm * 0.8).toFixed(2)}</h3>
-                        <button>Proceed</button>
+                        <button onClick={()=>this.handleCheckout(summm * 0.8)} >Checkout</button>
                     </div>
                 </div>
             <div className='cart-head'> 
@@ -101,9 +128,33 @@ class Cart extends React.Component {
             }
             </div>
 
-            <div className='proceed-div'>
-                
+            <div className={!this.state.show ? 'order' : 'order-2'}>
+                <div className='proceed-div'>
+                    <img src={Money} alt=""/>
+                    <h3 className='cart-back' onClick={this.handleCheckout}>X</h3>
+                    <div className='proceed-div-2'> 
+                        <h4>Original Price</h4>
+                        <h3>{summm}</h3>
+                        <h4>Discount</h4>
+                        <h3>{(summm * 0.2).toFixed(2)}</h3>
+                        <h4>Final Price</h4>
+                        <h2>{(summm * 0.8).toFixed(2)}</h2>
+                        <button>place</button>
+                    
+                        <div className='stripe'>
+                            <StripeCheckout
+                                token={this.onToken}
+                                stripeKey='pk_test_FUhDsB3c5yQRnUKpgDSJRTQK'
+                                amount={(summm * 0.8) * 100}
+                            />
+                        </div>
+
+                    </div>
                 </div>
+            </div>
+
+            <div className={this.state.show ? 'cover-cart' : 'cover-cart-2'}></div>\
+            
         </div>
         )
     }
@@ -122,7 +173,8 @@ const actions = {
     deleteItem,
     getCart,
     total,
-    quantity
+    quantity,
+    empty
 }
 
 export default connect(mapStateToProps, actions) (Cart)
