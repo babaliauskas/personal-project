@@ -24,14 +24,11 @@ export default class FullInfo extends Component {
     }
 
     render() {
-        console.log(this.state.more)
 
         let dinosaur = this.state.list.filter(e => {
-            // console.log('props.match.params: ', this.props.match.params)
             return e.name.toLowerCase() === this.props.match.params.id })
 
             let newDinosaur = dinosaur.map( (e,i) => {
-            console.log(e.weight, e.food)
             return (
                 <div key={i}>
                 <div className='fullinfo-name'>

@@ -9,23 +9,40 @@ const express = require("express"),
     stripe = require('stripe')(process.env.KEY),
     nodemailer = require('nodemailer'),
     busboy = require('connect-busboy'),
-    AWS = require('aws-sdk'),
-    Busboy = require('busboy'),
+    aws = require('aws-sdk'),
     busboyBodyParser = require('busboy-body-parser'),
-    BUCKET_NAME = (process.env.BUCKET_NAME),
-    IAM_USER_KEY = (process.env.IAM_USER_KEY),
-    IAM_USER_SECRET = (process.env.IAM_USER_SECRET);
-    
+    cors = require('cors'),
+    twilio = require('twilio'),
+    accountSid = process.env.accountSid,
+    authToken = process.env.authToken;
+
+    const client = new twilio(accountSid, authToken)
     
     const app = express();
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
     app.use(busboy());
     app.use(busboyBodyParser());
+    app.use(cors());
+
+
+////////////////////////////        TWILIO
+
+app.get('/api/twilio', (req, res) => {
+    res.send('Welcome to the Express server')
+})
+
+app.get('/api/send-text', (req, res) => {
+    const { recipient, textmessage } = req.query
+    client.messages.create({
+        body: textmessage,
+        to: recipient,
+        from: '+13524246862'
+    }).then(message => console.log(message.body))
+})
 
 
 ///////////         Stripe          ///////////////////
-//////////////////////////////////////////////
 
 
   
@@ -65,11 +82,6 @@ app.post('/api/payment', function(req, res, next){
       
   });
   })
-
-
-
-
-////////////////////////////////////////////////////////
 
 
 ////////////////////////   Auth0 ////////////////////
@@ -138,7 +150,6 @@ app.get('/api/logout', (req, res) => {
     res.redirect('http://localhost:3000/#/')
 })
 
-/////////////////////////////////////////////////////////////////////
 
 //////////////////////      NODEMAILER
 
@@ -191,68 +202,80 @@ app.post('/api/form', (req,res) => {
 
 
 
+////////////////////////////        AMAZON S3   
+
+/////////       UPLOAD
+
+aws.config.region = 'us-west-1';
+
+app.get('/api/upload', (req, res) => {
+  const s3 = new aws.S3();
+  const fileName = req.query['file-name'];
+  const fileType = req.query['file-type'];
+  const s3Params = {
+    Bucket: process.env.S3_BUCKET,
+    Key: fileName,
+    Expires: 60,
+    ContentType: fileType,
+    ACL: 'public-read'
+  };
+
+  s3.getSignedUrl('putObject', s3Params, (err, data) => {
+    if(err){
+      console.log(err);
+      return res.end();
+    }
+    const returnData = {
+      signedRequest: data,
+      url: `https://s3-${aws.config.region}.amazonaws.com/${process.env.S3_BUCKET}/${fileName}`
+    };
+    res.write(JSON.stringify(returnData));
+    res.end();
+  });
+});
+
+
+////////////////        GET
+
+app.get('/api/upload/get', async (req,res) => {
+    try {
+
+        aws.config.setPromisesDependency();
+
+        aws.config.update({
+            accessKeyId: process.env.IAM_USER_KEY,
+            secretAccessKey: process.env.IAM_USER_SECRET,
+            region: 'us-west-1'
+        });
+
+        const s3 = new aws.S3();
+        const response = await s3.listObjectsV2({
+            Bucket: 'l.babaliauskas'
+        }).promise();
+        res.status(200).send(response.Contents)
+
+        console.log('helllllllll yeah', response.Contents)
+    } catch (e) {
+        console.log(e)
+    }
+});
+
+
 //////////////////////////////////////////////////////////////////////
-
-
-app.post('/api/upload', (req, res) => {
-    const element1 = req.body.element1;
-    var busboy = new Busboy({ headers: req.headers });
-
-    console.log('element1: ')
-    console.log(element1)
-
-    busboy.on('finish', function() {
-        console.log('Upload finished')
-
-        console.log('files: ')
-        console.log(req.files)
-
-    const file = req.files.element2;
-    console.log(file)
-
-    let s3bucket = new AWS.S3({
-        accessKeyId: IAM_USER_KEY,
-        secretAccessKey: IAM_USER_SECRET,
-        Bucket: BUCKET_NAME
-    });
-    s3bucket.createBucket(function() {
-        var params = {
-            Bucket: BUCKET_NAME,
-            Key: file.name,
-            Body: file.data
-        };
-        s3bucket.upload(params, function(err, data) {
-            if(err) {
-                console.log('error in callback')
-                console.log(err)
-            }
-            console.log('success')
-            console.log(data)
-        })
-    })
-    })
-    req.pipe(busboy)
-} )
-
-
-
-
-
-//////////////////////////////////////////////////////////////////////
-
-
-
 
 
 
 app.get('/api/miniinfo', dinoCtrl.get);
 app.get('/api/store', dinoCtrl.getStore);
 app.get('/api/store/:item', dinoCtrl.getHats);
-app.put('/api/cart', cart.add);
+
+app.post('/api/cart', cart.add);
 app.get('/api/cartget', cart.get);
 app.delete('/api/cart/:id/:cartid', cart.delete);
-app.post('/api/cart/:id/:quantity', cart.update);
+app.put('/api/cart/:id/:quantity', cart.update);
 app.delete('/api/cart', cart.deleteAll);
+app.post('/api/gallery', cart.gallery);
+app.get('/api/gallery', cart.getGallery);
 
 app.listen(SERVER_PORT, () => console.log(`Listening on ${SERVER_PORT}`))
 

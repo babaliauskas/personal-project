@@ -3,10 +3,12 @@ module.exports = {
             const db = req.app.get('db');
             const {img, price} = req.body
     
+            
              db.add_dinosaurs_cart([img, price, +req.session.user.id])
             .then(response => res.status(200).send(response))
             .catch(err => console.log(err))
     },
+    
     get: (req, res) => {
         const db = req.app.get('db')
 
@@ -40,5 +42,22 @@ module.exports = {
         db.update_quantity([ id, quantity ])
         .then(response => res.status(200).send(response))
         .catch(err => console.log('aaaaaaaaaaaaaaaaaa', err))
+    },
+
+    gallery: (req, res) => {
+        const db = req.app.get('db')
+        const {url} = req.body
+
+        db.gallery([url])
+        .then(response => res.status(200).send(response))
+        .catch(err => console.log(err))
+    },
+
+    getGallery: (req, res) => {
+        const db = req.app.get('db')
+
+        db.getGallery()
+        .then(response => res.status(200).send(response))
+        .catch(err => console.log(err))
     }
 }

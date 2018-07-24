@@ -16,6 +16,7 @@ import Stegosaurus from './Components/Dinosaurs/Stegosaurus/Stegosaurus';
 import Minmi from './Components/Dinosaurs/Minmi/Minmi';
 import FullInfo from './Components/FullInfo/Fullinfo';
 import Support from './Components/Support/Support';
+import Photo from './Components/Nav/Photos/Photo';
 
 
 export default (
@@ -36,6 +37,6 @@ export default (
         <Route path='/minmi' component={Minmi} />
         <Route path='/info/:id' component={FullInfo} />
         <Route path='/support' component={Support} />
-
+        <Route path='/photo' component={Photo} />
     </Switch>
 )

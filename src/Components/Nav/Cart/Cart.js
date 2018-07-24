@@ -36,7 +36,7 @@ class Cart extends React.Component {
     }
 
     handleQuant = (id, quantity) => {
-        axios.post(`/api/cart/${id}/${quantity}`)
+        axios.put(`/api/cart/${id}/${quantity}`)
         .then(response => {
             this.props.quantity(response.data)
         }).catch(err => console.log('Quantity', err))
@@ -64,6 +64,7 @@ class Cart extends React.Component {
 
 
         render(){
+            // console.log(this.props.cart)
             let sum = [];
             let total = this.props.cart.map( e =>{ return +e.price ? sum.push(+e.price * +e.quantity) : null })
             let summ = sum.reduce((accumulator, currentValue) => {return accumulator + currentValue}, 0)
@@ -139,7 +140,7 @@ class Cart extends React.Component {
                         <h3>{(summm * 0.2).toFixed(2)}</h3>
                         <h4>Final Price</h4>
                         <h2>{(summm * 0.8).toFixed(2)}</h2>
-                        <button>place</button>
+                        <button>Place Order</button>
                     
                         <div className='stripe'>
                             <StripeCheckout

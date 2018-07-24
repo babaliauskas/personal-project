@@ -4,12 +4,14 @@ const initialState = {
     user: {},
     cart: [],
     total: [],
+    gallery: []
   };
 
 
-  const EMPTY = "EMPTY"
-  const QUANTITY = 'QUANTITY'
-  const TOTAL = 'TOTAL'
+  const GALLERY = "GALLERY";
+  const EMPTY = "EMPTY";
+  const QUANTITY = 'QUANTITY';
+  const TOTAL = 'TOTAL';
   const CART = 'CART';
   const LOGIN = "LOGIN";
   const ADD_ITEM = 'ADD_ITEM';
@@ -30,7 +32,9 @@ export default function reducer(state=initialState, action) {
         case QUANTITY:
             return Object.assign({}, state, {cart: action.payload});
         case EMPTY:
-            return Object.assign({}, state, {cart: []}) 
+            return Object.assign({}, state, {cart: []});
+        case GALLERY:
+            return Object.assign({}, state, {gallery: action.payload}); 
         default:
             return state
     }
@@ -81,5 +85,12 @@ export function quantity(qtn) {
 export function empty() {
     return {
         type: EMPTY
+    }
+}
+
+export function addGallery(gallery) {
+    return {
+        type: GALLERY,
+        payload: gallery
     }
 }

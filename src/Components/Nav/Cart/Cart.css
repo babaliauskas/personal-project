@@ -170,6 +170,7 @@
 
 .proceed-div-2 button {
     padding: 5px;
+    width: 150px;
     border-radius: 5px;
     background-color: rgb(241, 135, 36);
     box-shadow: 1px 1px 5px black;
@@ -177,7 +178,7 @@
     font-size: 18px;
     outline: none;
     position: absolute;
-    right: 20px;
+    right: 0px;
 }
 .stripe {
     position: absolute;
@@ -226,7 +227,7 @@
 .cover-cart {
     position: fixed;
     top:0;
-    width: 99vw;
+    width: 100vw;
     height: 100%;
     background-color: rgb(8, 8, 8);
     opacity: 0.4;
@@ -236,8 +237,6 @@
 .cover-cart-2 {
     display: none;
 }
-
-
 
 @keyframes fadein {
     from { opacity: 0; }

@@ -103,6 +103,7 @@ export default class Contact extends React.Component {
 
                 <div>
                     <textarea 
+                        className='contact-text'
                         name="text" 
                         id="" 
                         cols="30" 

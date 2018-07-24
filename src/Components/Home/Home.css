@@ -73,8 +73,8 @@
 .img {
     animation: bounce .5s infinite alternate;
     -webkit-animation: bounce .5s infinite alternate;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     border: 1px solid rgb(168, 168, 168);
     border-radius: 50px;
     box-shadow: 0px 0px 20px 20px rgba(41, 41, 41, 0.712);
@@ -114,6 +114,68 @@
     bottom: 40px;
     display: block;
     animation: fadein 2s
+}
+
+.twilio {
+    position: absolute;
+    width: 300px;
+    height: 230px;
+    background-color: rgb(136, 136, 136);
+    border-radius: 10px;
+    bottom: 30px;
+    left: 30px;
+    padding: 20px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 5px black;
+    animation: fadein 2s;
+}
+
+.twilio2 {
+    display: none;
+}
+
+.chat {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    padding: 10px;
+    font-size: 20px;
+    width: 200px;
+    animation: fadein 2s;
+}
+
+.chat2 {
+    display: none;
+}
+
+.twilio-text textarea {
+    border: 1px solid black;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 2px 2px 5px black;
+    font-family: 'Song Myung', serif;
+    padding: 10px;
+}
+
+.twilio button {
+    width: 100%;
+    margin-top: 10px;
+    height: 30px; 
+    border: 1px solid black;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 2px 2px 5px black;
+    font-family: 'Song Myung', serif;
+    cursor: pointer;
+}
+
+.twilio h3 {
+    position: relative;
+    width: 20px;
+    margin-left: 230px;
+    margin-top: -10px;
+    margin-bottom: 10px;;
+    cursor: pointer;
 }
 
 

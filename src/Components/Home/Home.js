@@ -12,14 +12,25 @@ import dino18 from '../../img/18.png';
 import dino17 from '../../img/17.png';
 import egg from '../../img/10.png';
 import egg2 from '../../img/7.png';
+import axios from 'axios';
 
 
 export default class Home extends React.Component {
     constructor(){
         super()
         this.state = {
-            egg: true
+            egg: true,
+            text: {
+                recipient: '+13012477796',
+                textmessage: ''
+            }
         }
+    }
+
+    sendText = () => {
+        const { text } = this.state
+        axios.get(`/api/send-text?recipient=${text.recipient}&textmessage=${text.textmessage}`)
+        .catch(err => console.log(err))
     }
 
     handleEgg = () => {
@@ -27,6 +38,7 @@ export default class Home extends React.Component {
     }
 
     render(){
+        const { text } = this.state;
     return (
         <div className='home'>
             <Navigation/>
@@ -42,6 +54,29 @@ export default class Home extends React.Component {
                 <img onClick={this.handleEgg} className={this.state.egg ? 'egg' : 'egg-none'} src={egg} alt=""/>
                 <img className={this.state.egg ? 'egg2' : 'egg2-show'} src={egg2} alt=""/>
             </section>
+  
+                <div className={!this.state.egg ? 'twilio' : 'twilio2'}>
+                    <h3 onClick={this.handleEgg}>X</h3>
+                    <div  className='twilio-text'>
+                        <textarea 
+                            cols='35'
+                            rows='5'
+                            value={text.textmessage} 
+                            placeholder='text + your #'
+                            onChange={e => this.setState({ text: { ...text, textmessage: e.target.value } })}  ></textarea>  
+                    </div>
+                    <div>
+                        <button onClick={this.sendText}> Send Text </button>                  
+                    </div>
+                    {/* <textarea 
+                        value={text.textmessage} 
+                        placeholder='text + your #'
+                        onChange={e => this.setState({ text: { ...text, textmessage: e.target.value } })} />
+                     */}
+                </div>
+
+                <button onClick={this.handleEgg} className={this.state.egg ? 'chat' : 'chat2'} >Send Message</button>
+
         </div>
     )
 }

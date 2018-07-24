@@ -38,14 +38,14 @@
     font-family: 'Song Myung', serif;
 }
 
-textarea {
+.contact-text {
     margin-top: 20px;
     border-radius: 10px;
     padding: 10px;
     outline: none;
-    margin-left: -200px;
     box-shadow: 2px 2px 5px black;
     font-family: 'Song Myung', serif;
+    margin-left: -200px;
 }
 
 .send {

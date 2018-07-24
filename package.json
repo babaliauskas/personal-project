@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "aws-sdk": "^2.278.1",
+    "aws-sdk": "^2.279.1",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "busboy": "^0.2.14",
@@ -11,6 +11,7 @@
     "chalk": "^2.4.1",
     "concurrently": "^3.6.0",
     "connect-busboy": "0.0.2",
+    "cors": "^2.8.4",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
@@ -19,15 +20,20 @@
     "nodemailer": "^4.6.7",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-dropzone": "^4.2.13",
+    "react-fancybox": "^0.2.3",
+    "react-images-zoom": "^1.0.7",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
+    "react-spinners": "^0.3.3",
     "react-stripe-checkout": "^2.6.3",
     "react-stripe-elements": "^2.0.1",
     "reactstrap": "^6.3.0",
     "redux": "^4.0.0",
     "session": "^0.1.0",
-    "stripe": "^6.3.0"
+    "stripe": "^6.3.0",
+    "twilio": "^3.18.0"
   },
   "scripts": {
     "start": "react-scripts start",
