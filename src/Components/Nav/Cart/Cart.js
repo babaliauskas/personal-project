@@ -7,6 +7,7 @@ import './Cart.css'
 import {Link} from 'react-router-dom';
 import Money from '../../../img/money2.png';
 import StripeCheckout from 'react-stripe-checkout';
+import swal from 'sweetalert2';
 
 
 class Cart extends React.Component {
@@ -52,7 +53,22 @@ class Cart extends React.Component {
         token.card = void 0;
         console.log('token', token);
 
-        axios.post('/api/payment', { token, amount: this.state.price } ).then(response => { alert('we are in business')}).then( () => this.props.history.push('store') );
+        axios.post('/api/payment', { token, amount: this.state.price } ).then(response => { 
+            const toast = swal.mixin({
+                toast: true,
+                position: 'center',
+                heightAuto: false,
+                showConfirmButton: false,
+                background: 'rgb(82, 194, 8)',
+                imageUrl: 'http://www.stickpng.com/assets/images/589701f9cba9841eabab6105.png',
+                timer: 3000
+              });
+              
+              toast({
+                type: 'success',
+                title: 'Item added!'
+              })
+          }).then( () => this.props.history.push('store') );
 
         axios.delete('/api/cart')
         .then(response => { 

@@ -5,7 +5,7 @@ import Sunny from '../../img/sunny.png';
 import Clouds from '../../img/clouds.png';
 import Rain from '../../img/rain.png';
 
-const API_KEY = '027fbdd98b026f05b362bd2ee730175b';
+import API_KEY from '../WeatherApi/api'
 
 
 class Navigation extends Component {
@@ -76,13 +76,16 @@ class Navigation extends Component {
   }
 
   getWeather = async (e) => {
+    console.log(process.env.REACT_APP_WEATHER_API_KEY)
     e.preventDefault();
-    const api_call = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Barcelona,ES&appid=${API_KEY}`)
+    const api_call = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Barcelona,ES&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
     const data = await api_call.json();
+  
     this.testDayOfWeek();
     this.setState({list: data.list})
 }
   render() {
+    
 
     let neaw = this.state.list.filter( (e, i) => i===0 || i === 7 || i===15 || i===23 || i===31 || i===39)
 

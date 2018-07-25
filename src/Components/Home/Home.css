@@ -118,8 +118,9 @@
 
 .twilio {
     position: absolute;
-    width: 300px;
-    height: 230px;
+    width: 25%;
+    min-width: 250px;
+    height: 260px;
     background-color: rgb(136, 136, 136);
     border-radius: 10px;
     bottom: 30px;
@@ -142,6 +143,10 @@
     font-size: 20px;
     width: 200px;
     animation: fadein 2s;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px black;
+    cursor: pointer;
+    outline: none;
 }
 
 .chat2 {
@@ -149,6 +154,7 @@
 }
 
 .twilio-text textarea {
+    width: 90%;
     border: 1px solid black;
     border-radius: 10px;
     outline: none;
@@ -157,11 +163,21 @@
     padding: 10px;
 }
 
+.twilio-text input {
+    width: 90%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 2px 2px 5px black;
+    font-family: 'Song Myung', serif;
+}
+
 .twilio button {
-    width: 100%;
+    width: 90%;
     margin-top: 10px;
     height: 30px; 
-    border: 1px solid black;
     border-radius: 10px;
     outline: none;
     box-shadow: 2px 2px 5px black;
@@ -172,7 +188,7 @@
 .twilio h3 {
     position: relative;
     width: 20px;
-    margin-left: 230px;
+    margin-left: 90%;
     margin-top: -10px;
     margin-bottom: 10px;;
     cursor: pointer;

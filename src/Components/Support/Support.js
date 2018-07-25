@@ -1,24 +1,33 @@
-import React from 'react'
-import StripeCheckout from 'react-stripe-checkout';
+import React from 'react';
+
+import swal from 'sweetalert2';
+
+const toast = swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+});
 
 export default class Support extends React.Component {
-    onToken = (token) => {
-        fetch('/save-stripe-token', {
-          method: 'POST',
-          body: JSON.stringify(token),
-        }).then(response => {
-          response.json().then(data => {
-            alert(`We are in business, ${data.email}`);
-          });
-        });
-      }
     
-      render() {
+      render() { 
+        const toast = swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000
+        });
+        
+        toast({
+          type: 'success',
+          title: 'Signed in successfully'
+        })
         return (
-          <StripeCheckout
-            token={this.onToken}
-            stripeKey="pk_test_FUhDsB3c5yQRnUKpgDSJRTQK"
-          />
+          <div>
+            
+              
+          </div>
         )
       }
 }

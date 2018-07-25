@@ -20,21 +20,32 @@ export default class Home extends React.Component {
         super()
         this.state = {
             egg: true,
+            egg3: true,
             text: {
                 recipient: '+13012477796',
-                textmessage: ''
+                textmessage: '',
+                number: ''
             }
         }
     }
 
     sendText = () => {
         const { text } = this.state
-        axios.get(`/api/send-text?recipient=${text.recipient}&textmessage=${text.textmessage}`)
+        console.log(text)
+        axios.get(`/api/send-text?recipient=${text.recipient}&number=${text.number}&textmessage=${text.textmessage}`)
         .catch(err => console.log(err))
+        this.setState({ 
+            textmessage: '',
+            number: ''
+         })
     }
 
     handleEgg = () => {
         this.setState ({ egg: !this.state.egg })
+    }
+
+    handleEgg2 = () => {
+        this.setState({ egg3: !this.state.egg3})
     }
 
     render(){
@@ -55,27 +66,29 @@ export default class Home extends React.Component {
                 <img className={this.state.egg ? 'egg2' : 'egg2-show'} src={egg2} alt=""/>
             </section>
   
-                <div className={!this.state.egg ? 'twilio' : 'twilio2'}>
-                    <h3 onClick={this.handleEgg}>X</h3>
+                <div className={!this.state.egg3 ? 'twilio' : 'twilio2'}>
+                    <h3 onClick={this.handleEgg2}>X</h3>
                     <div  className='twilio-text'>
+                        <input 
+                            value={text.number}
+                            placeholder='Your Number'
+                            onChange={e => this.setState({ text: { ...text, number: e.target.value } })} />
+
                         <textarea 
                             cols='35'
                             rows='5'
                             value={text.textmessage} 
-                            placeholder='text + your #'
-                            onChange={e => this.setState({ text: { ...text, textmessage: e.target.value } })}  ></textarea>  
+                            placeholder='Message'
+                            onChange={e => this.setState({ text: { ...text, textmessage: e.target.value } })}>
+                        </textarea>  
                     </div>
+
                     <div>
                         <button onClick={this.sendText}> Send Text </button>                  
                     </div>
-                    {/* <textarea 
-                        value={text.textmessage} 
-                        placeholder='text + your #'
-                        onChange={e => this.setState({ text: { ...text, textmessage: e.target.value } })} />
-                     */}
                 </div>
 
-                <button onClick={this.handleEgg} className={this.state.egg ? 'chat' : 'chat2'} >Send Message</button>
+                <button onClick={this.handleEgg2} className={this.state.egg3 ? 'chat' : 'chat2'} >Send Message</button>
 
         </div>
     )

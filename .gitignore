@@ -9,6 +9,8 @@
 # production
 /build
 
+/src/Components/WeatherApi
+
 # misc
 .DS_Store
 .env.local

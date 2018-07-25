@@ -5,6 +5,7 @@ import axios from 'axios';
 import {addItem} from '../../../duck/reducer';
 import {connect} from 'react-redux';
 import Star from '../../../img/star.svg.png'
+import swal from 'sweetalert2';
 
 class Store extends React.Component {
     constructor(){
@@ -32,7 +33,22 @@ class Store extends React.Component {
         axios.post('/api/cart', bla )
         .then(response => {
             this.props.addItem(response.data)
+            const toast = swal.mixin({
+                toast: true,
+                position: 'center',
+                heightAuto: false,
+                showConfirmButton: false,
+                background: 'rgb(82, 194, 8)',
+                imageUrl: 'https://vignette.wikia.nocookie.net/township/images/6/68/Thumb-up-smiley.png/revision/latest?cb=20150808121702',
+                timer: 1000
+              });
+              
+              toast({
+                type: 'success',
+                title: 'Item added!'
+              })
         }).catch(err => console.log(err))
+
     }
 
 

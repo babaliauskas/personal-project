@@ -33,9 +33,9 @@ app.get('/api/twilio', (req, res) => {
 })
 
 app.get('/api/send-text', (req, res) => {
-    const { recipient, textmessage } = req.query
+    const { recipient, textmessage, number } = req.query
     client.messages.create({
-        body: textmessage,
+        body: `${textmessage} FROM: ${number}`,
         to: recipient,
         from: '+13524246862'
     }).then(message => console.log(message.body))

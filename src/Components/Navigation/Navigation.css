@@ -68,10 +68,6 @@ a {
   font-family: "Song Myung", serif;
 }
 
-.selected {
-  color: red;
-}
-
 .hidden-list a {
   margin: 0 20px;
   font-size: 18px;
