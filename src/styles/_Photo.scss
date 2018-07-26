@@ -10,8 +10,9 @@
     background-color:rgb(3, 129, 10);
     width: 62%;
     margin: 30px auto;
-    padding: 10px;
-    border-radius: 10px
+    border-radius: 10px;
+    padding-top: 1px;
+    padding-bottom: 30px;
 }
 
 .chose-image {
@@ -25,40 +26,24 @@
     align-items: center;
     justify-content: space-around;
     cursor: pointer;
-    margin: 50px auto;
+    margin: auto;
     border-radius: 10px;
     color: white;
     animation: fadein 2s;
+    margin-top: 50px;
 }
 
 .chose-image {
     padding: 20px;
 }
 
-.photo-render img {
-    width: 250px;
-    height: auto;
-    margin: 20px;
-    border-radius: 5px;
-    border: 3px solid #eee;
-    box-shadow: 3px 3px 10px rgb(41, 41, 41);
-    animation: fadein 2s;
-}
-
-.photo-render img:hover {
-    width: 290px;
-    margin: 5px;
-    box-shadow: 5px 5px 15px rgb(41, 41, 41);
-    transition: 0.5s;
-}
 
 .gallery-size {
     margin: auto;
     width: 80%;
-    border: 5px solid rgb(207, 207, 207);
+    margin-top: 50px;
+    border: 5px solid white;
     box-shadow: 3px 3px 10px black;
-    margin-bottom: 30px;
-    border-radius: 10px;
 }
 
 @keyframes fadein {

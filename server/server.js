@@ -128,11 +128,11 @@ app.get('/auth/callback', async (req, res) => {
     let userExists = await db.find_user([sub])
      if (userExists[0]) {
          req.session.user = userExists[0];
-         res.redirect('http://localhost:3000/#/home')
+         res.redirect(`${process.env.FRONTEND_DOMAIN}/#/home`)
      } else {
          db.create_user([sub, name]).then( createdUser => {
             req.session.user = createdUser[0];
-            res.redirect('http://localhost:3000/#/home')
+            res.redirect(`${process.env.FRONTEND_DOMAIN}/#/home`)
          })
      }
 });
@@ -148,7 +148,7 @@ app.get('/api/user-data', (req, res) => {
 
 app.get('/api/logout', (req, res) => {
     req.session.destroy()
-    res.redirect('http://localhost:3000/#/')
+    res.redirect(`${process.env.FRONTEND_DOMAIN}/#/`)
 })
 
 

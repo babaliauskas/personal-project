@@ -49,8 +49,6 @@ class Cart extends React.Component {
 
     onToken = (token) => {
         token.card = void 0;
-        console.log('token', token);
-
         axios.post('/api/payment', { token, amount: this.state.price } ).then(response => { 
             const toast = swal.mixin({
                 toast: true,
@@ -86,7 +84,6 @@ class Cart extends React.Component {
 
 
             let list = this.props.cart.map( (product, i) => {
-                console.log(product.quantity)
                 
                 return (
                     <div key={product.id} className='items' >

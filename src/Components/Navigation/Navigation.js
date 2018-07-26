@@ -81,6 +81,9 @@ class Navigation extends Component {
     this.testDayOfWeek();
     this.setState({list: data.list})
 }
+
+
+
   render() {
     
 
@@ -132,7 +135,7 @@ class Navigation extends Component {
                 <NavLink activeStyle={{ color: 'rgb(243, 155, 23)' }} to='/tickets' ><li>Tickets</li></NavLink>
                 <NavLink activeStyle={{ color: 'rgb(243, 155, 23)' }} to='/cart' ><li>Cart</li></NavLink>
                 <NavLink activeStyle={{ color: 'rgb(243, 155, 23)' }} to='/photo' ><li>Photo</li></NavLink>
-                <NavLink to='/' ><li>Logout</li></NavLink>
+                <a href={`${window.origin}/api/logout`} ><li>Logout</li></a>
             </ul>
         </div>
       </div>
