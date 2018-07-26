@@ -20,8 +20,8 @@ const express = require("express"),
     const client = new twilio(accountSid, authToken)
     
     const app = express();
-    app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: false }));
     app.use(busboy());
     app.use(busboyBodyParser());
     app.use(cors());
@@ -158,17 +158,7 @@ app.get('/api/logout', (req, res) => {
 
 
 app.post('/api/form', (req,res) => {
-    nodemailer.createTestAccount((err, account) => {
-        const htmlEmail = `
-            <h3>Contact Details</h3>
-                <ul>
-                    <li>Name: ${req.body.name}</li>
-                    <li>Email: ${req.body.email}</li>
-                </ul>
-
-                <h3>Message</h3>
-                <p>${req.body.message}</p>
-        `
+    
 
         let transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
@@ -184,12 +174,10 @@ app.post('/api/form', (req,res) => {
         })
 
         let mailOptions = {
-            from: `${req.body.email}`,
-            to: `${process.env.EMAIL}`,
-            
+            from: req.body.email,
+            to: process.env.EMAIL,
             subject: 'New Message',
             text: req.body.message,
-            html: htmlEmail
         }
 
         transporter.sendMail(mailOptions, (err, info) => {
@@ -199,7 +187,6 @@ app.post('/api/form', (req,res) => {
             console.log('Message sent: %s', info.message)
             console.log('Message URL: %s', nodemailer.getTestMessageUrl(info))
         })
-    })
 })
 
 

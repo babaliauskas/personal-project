@@ -12,6 +12,7 @@ export default class Contact extends React.Component {
             message: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this)
+        
     }
 
     handleChange = e => {
@@ -37,7 +38,7 @@ export default class Contact extends React.Component {
             <Navigation/>
 
 
-            <form onSubmit={this.handleSubmit} >
+            <form  >
                 
                 {/* <div>
                     <label for='name'>Name</label>
@@ -78,7 +79,7 @@ export default class Contact extends React.Component {
                         type="text" 
                         placeholder='Name' 
                         name='name' 
-                        onChange={(e) => this.handleChange(e)} 
+                        onChange={this.handleChange} 
                         value={this.state.name}/>
                 </div>
 
@@ -106,7 +107,7 @@ export default class Contact extends React.Component {
                 </div>
 
                 <div>
-                    <button onClick={this.handleClear} className='send'>
+                    <button onClick={this.handleSubmit} className='send'>
                         CONTACT US
                     </button>
                 </div>
