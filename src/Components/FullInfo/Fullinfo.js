@@ -71,7 +71,6 @@ export default class FullInfo extends Component {
                         {newDinosaur}
 
             <div className='fullinfo-button'>
-                <Link to='/support'><button className='fullinfo-support'>Support </button></Link>
                 <button onClick={() => this.props.history.goBack()} className='fullinfo-back'>Back </button>
             </div>
         </section> 
