@@ -2,7 +2,6 @@ import React from 'react';
 import Navigation from '../../Navigation/Navigation';
 import {Link} from 'react-router-dom';
 import StegosaurusImg from '../../../img/2.png'
-import './Stegosaurus.css';
 import Next from '../../../img/next.png';
 import MiniInfo from '../../MiniInfo/MiniInfo';
 

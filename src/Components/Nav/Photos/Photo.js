@@ -3,9 +3,9 @@ import Navigation from '../../Navigation/Navigation';
 import axios from 'axios';
 import Dropzone from 'react-dropzone';
 import {connect} from 'react-redux';
-// import { GridLoader } from 'react-spinners';
 import { addGallery } from '../../../duck/reducer';
-import './Photo.css';
+import ImageGallery from 'react-image-gallery';
+// import './Photo.css'
 
 
  class Photo extends React.Component {
@@ -20,9 +20,24 @@ import './Photo.css';
         }
     }
 
+    // componentDidMount = () => {
+    //     axios.get('/api/gallery').then(response => {
+    //         this.props.addGallery( response.data )
+    //     })
+    // }
+
+
     componentDidMount = () => {
         axios.get('/api/gallery').then(response => {
-            this.props.addGallery( response.data )
+          let images = []
+          for ( let i=0; i<response.data.length; i++){
+          images.push({
+            original: response.data[i].url,
+            thumbnail: response.data[i].url
+          });
+        }
+            // this.setState( {images: images })
+            this.props.addGallery( images )
         })
     }
 
@@ -71,15 +86,26 @@ import './Photo.css';
     
 
     render(){
+        // console.log(this.state.images)
 
+        // let img = this.props.gallery.map( (e,i) => {
+        //     return (
+        //         <div key={i.id} className='photo-render'>
+        //                  <img onClick={() => this.handleZoom(i.id)} src= {e.url} alt=""/>
+        //         </div>
+        //     )
+        // })
 
-        let img = this.props.gallery.map( (e,i) => {
-            return (
-                <div key={i.id} className='photo-render'>
-                         <img onClick={() => this.handleZoom(i.id)} src= {e.url} alt=""/>
-                </div>
-            )
-        })
+        // let images = this.props.gallery.map( (e,i ) => {
+        //   return (
+        //     <div>
+        //       {e}
+        //     </div>
+        //   )
+        // })
+
+        console.log(this.props.gallery)
+
  
         return (
             <div className="photo">
@@ -95,8 +121,14 @@ import './Photo.css';
                 <p>Chose File</p>
               </Dropzone>
 
-              <div className='photo-render-display'>
-                  {img}
+              <div className='gallery-size'>
+                <ImageGallery 
+                  items={this.props.gallery}
+                  showPlayButton = {false}
+                  showBullets={false}
+                  showFullscreenButton={true}
+                  showNav={false}
+                  />
               </div>
 
             </div>

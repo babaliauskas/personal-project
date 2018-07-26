@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './FullInfo.css';
 import Navigation from '../Navigation/Navigation'
 import {Link} from 'react-router-dom'
 import axios from 'axios'

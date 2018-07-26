@@ -2,8 +2,11 @@ import React from 'react';
 import Navigation from '../../Navigation/Navigation';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import './Tickets.css';
- 
+import axios from 'axios';
+import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addTicket } from '../../../duck/reducer';
+import StripeCheckout from 'react-stripe-checkout';
 import 'react-datepicker/dist/react-datepicker.css';
 
 class Tickets extends React.Component {
@@ -11,7 +14,8 @@ class Tickets extends React.Component {
       super(props)
       this.state = {
         startDate: moment(),
-        number: 1
+        days: 1,
+        price: 850
       };
       this.handleChange = this.handleChange.bind(this);
     }
@@ -22,11 +26,29 @@ class Tickets extends React.Component {
       });
     }
 
-    handlePassQtn = val => {
-        this.setState({ number: val })
+    handleDays = val => {
+        this.setState({ days: val, price: 850 * val })
     }
-   
+
+    handleTickets = (daypass, startingdate, price) => {
+        let tickets = {daypass, startingdate, price}
+        axios.post('/api/tickets', tickets)
+        .then(response => {
+            this.props.addTicket(response.data)
+        })
+        .catch(err => console.log('handle tickets: ', err))
+    }
+
+    onToken = (token) => {
+        token.card = void 0;
+        axios.post('/api/payment', { token, amount: this.state.price } )
+          .then( () => this.props.history.push('yourtickets'), this.handleTickets(this.state.days, this.state.startDate, this.state.price) ) 
+          .catch(err => console.log(err));
+    }
+    
+
     render() {
+        console.log(this.state.price)
         let random = Math.floor((Math.random() * 10000000 ) + 1)
         let random2 = Math.floor((Math.random() * 100000 ) + 1)
         let random3 = Math.floor((Math.random() * 1000 ) + 1)
@@ -35,25 +57,26 @@ class Tickets extends React.Component {
         let random6 = Math.floor((Math.random() * 1000 ) + 1)
         let random7 = Math.floor((Math.random() * 100000 ) + 1)
         let random8 = Math.floor((Math.random() * 100000 ) + 1)
+
         return (
           <div className='tickets'>
               <Navigation />
               <div className='buy-your'>
-                  <h3>Buy Tickets</h3>
-                  <h3>Your Tickets</h3>
+                  <h3 style={{ color: 'rgb(243, 155, 23)' }}>Buy Tickets</h3>
+                  <Link to='/yourtickets'><h3>Your Tickets</h3></Link>
               </div>
 
             <div className='main-tickets'>
                 <div className='day-pass' >
-                    <input value={this.state.number} onChange={e => this.handlePassQtn(e.target.value)} type="number"/>
+                    <input value={this.state.days} onChange={e => this.handleDays(e.target.value)} type="number"/>
                     <p>DAY PASS</p>
                 </div>
                 <div className='price-tickets'>
-                    <p>PRICE ${this.state.number * 850} </p>
+                    <p >PRICE ${this.state.days * 850}</p>
                 </div>
                     <img className='img-tickets' src="https://s3-us-west-1.amazonaws.com/l.babaliauskas/logo.png" alt=""/>
                 <div className='date-picker'>
-                    <p>DATE: </p>
+                    <p>STARTING DATE: </p>
                     <DatePicker
                         className='datepicker1'
                         selected={this.state.startDate}
@@ -82,13 +105,29 @@ class Tickets extends React.Component {
                 </div>
             </div>
 
+
+            <div className='bybis'>
             <button className='tickets-button'>Place Your Order</button>
+                <StripeCheckout
+                    className='tickets-checkout'
+                    token={this.onToken}
+                    stripeKey='pk_test_FUhDsB3c5yQRnUKpgDSJRTQK'
+                    amount={this.state.price * 100}
+                />
+            </div>
+            
+
 
         </div>
       ) 
-      
-     
     }
+}
+
+  function mapStateToProps(state) {
+      const { tickets } = state
+      return {
+          tickets
+      }
   }
 
-export default Tickets
+export default connect(mapStateToProps, {addTicket}) (Tickets)

@@ -2,7 +2,6 @@ import React from 'react';
 import Navigation from '../../Navigation/Navigation';
 import {Link} from 'react-router-dom';
 import DaspletosaurusImg from '../../../img/5.png';
-import './Daspletosaurus.css';
 import Next from '../../../img/next.png';
 import MiniInfo from '../../MiniInfo/MiniInfo';
 

@@ -2,7 +2,6 @@ import React from 'react';
 import Navigation from '../../Navigation/Navigation';
 import {Link} from 'react-router-dom';
 import MinmiImg from '../../../img/18.png';
-import './Minmi.css';
 import Next from '../../../img/next.png';
 import MiniInfo from '../../MiniInfo/MiniInfo';
 

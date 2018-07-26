@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import {NavLink} from 'react-router-dom';
-import './Navigation.css';
 import Sunny from '../../img/sunny.png';
 import Clouds from '../../img/clouds.png';
 import Rain from '../../img/rain.png';
-
-import API_KEY from '../WeatherApi/api'
 
 
 class Navigation extends Component {

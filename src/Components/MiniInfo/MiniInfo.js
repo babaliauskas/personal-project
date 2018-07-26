@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import './MiniInfo.css';
 
 
 export default class MiniInfo extends Component {

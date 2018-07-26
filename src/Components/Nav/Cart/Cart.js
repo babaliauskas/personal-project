@@ -3,7 +3,6 @@ import Navigation from '../../Navigation/Navigation';
 import axios from 'axios';
 import {deleteItem, getCart, total, quantity, empty} from '../../../duck/reducer';
 import {connect} from 'react-redux';
-import './Cart.css'
 import {Link} from 'react-router-dom';
 import Money from '../../../img/money2.png';
 import StripeCheckout from 'react-stripe-checkout';
@@ -25,7 +24,6 @@ class Cart extends React.Component {
         axios.get('/api/cartget').then(response => {
             this.props.getCart( response.data )
         }).catch(err => console.log(err))
-        
     }
 
 

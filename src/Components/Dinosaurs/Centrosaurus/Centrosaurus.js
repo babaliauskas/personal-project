@@ -2,7 +2,6 @@ import React from 'react';
 import Navigation from '../../Navigation/Navigation';
 import {Link} from 'react-router-dom';
 import CentrosaurusImg from '../../../img/1.png'
-import './Centrosaurus.css';
 import Next from '../../../img/next.png';
 import MiniInfo from '../../MiniInfo/MiniInfo';
 

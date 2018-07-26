@@ -1,0 +1,67 @@
+@import "node_modules/react-image-gallery/styles/scss/image-gallery.scss";
+.photo {
+    background-image: linear-gradient( rgba(0, 0, 0, 0.678), rgba(0, 0, 0, 0.678) ), url(../img/bla.png);
+    background-size: cover;
+    min-height: 100vh;
+    height: 100%;
+}
+
+.photo-display {
+    background-color:rgb(3, 129, 10);
+    width: 62%;
+    margin: 30px auto;
+    padding: 10px;
+    border-radius: 10px
+}
+
+.chose-image {
+    position: relative;
+    border: 2px solid rgb(160, 105, 4);
+    background-color: rgb(219, 143, 3);
+    box-shadow: 2px 2px 5px black;
+    display: flex;
+    width: 150px;
+    height: 30px;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+    margin: 50px auto;
+    border-radius: 10px;
+    color: white;
+    animation: fadein 2s;
+}
+
+.chose-image {
+    padding: 20px;
+}
+
+.photo-render img {
+    width: 250px;
+    height: auto;
+    margin: 20px;
+    border-radius: 5px;
+    border: 3px solid #eee;
+    box-shadow: 3px 3px 10px rgb(41, 41, 41);
+    animation: fadein 2s;
+}
+
+.photo-render img:hover {
+    width: 290px;
+    margin: 5px;
+    box-shadow: 5px 5px 15px rgb(41, 41, 41);
+    transition: 0.5s;
+}
+
+.gallery-size {
+    margin: auto;
+    width: 80%;
+    border: 5px solid rgb(207, 207, 207);
+    box-shadow: 3px 3px 10px black;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

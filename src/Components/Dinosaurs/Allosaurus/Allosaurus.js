@@ -1,7 +1,6 @@
 import React from 'react';
 import Navigation from '../../Navigation/Navigation';
 import {Link} from 'react-router-dom';
-import './Allosaurus.css';
 import AllosaurusImg from '../../../img/16.png';
 import Next from '../../../img/next.png';
 import MiniInfo from '../../MiniInfo/MiniInfo';

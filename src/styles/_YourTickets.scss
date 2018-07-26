@@ -1,0 +1,25 @@
+.yourtickets {
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../img/bla.png);
+    width: 100vw;
+    min-height: 100vh;
+    height: 100%;
+    background-size: cover;
+}
+.main-tickets2 {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+#c {
+    color: rgb(243, 155, 23);
+    cursor: pointer;
+}
+.d {
+    color: white;
+    cursor: pointer;
+}
+
+.d:hover {
+    color: rgb(243, 155, 23);
+}
+

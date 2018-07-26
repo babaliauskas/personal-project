@@ -2,7 +2,6 @@ import React from 'react';
 import Navigation from '../../Navigation/Navigation';
 import {Link} from 'react-router-dom';
 import MamenchisaurusImg from '../../../img/8.png';
-import './Mamenchisaurus.css';
 import Next from '../../../img/next.png';
 import MiniInfo from '../../MiniInfo/MiniInfo';
 

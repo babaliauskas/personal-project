@@ -1,11 +1,12 @@
 require('dotenv').config();
 const express = require("express"),
+    dinoCtrl = require('./controllers/dinosaurs_controller'),
+    cart = require('./controllers/cart'),
+    tickets = require('./controllers/tickets'),
     axios = require('axios'),
     massive= require('massive'),      
     bodyParser = require('body-parser'),
     session = require('express-session'),
-    dinoCtrl = require('./controllers/dinosaurs_controller'),
-    cart = require('./controllers/cart'),
     stripe = require('stripe')(process.env.KEY),
     nodemailer = require('nodemailer'),
     busboy = require('connect-busboy'),
@@ -276,6 +277,9 @@ app.put('/api/cart/:id/:quantity', cart.update);
 app.delete('/api/cart', cart.deleteAll);
 app.post('/api/gallery', cart.gallery);
 app.get('/api/gallery', cart.getGallery);
+
+app.post('/api/tickets', tickets.add)
+app.get('/api/tickets', tickets.get);
 
 app.listen(SERVER_PORT, () => console.log(`Listening on ${SERVER_PORT}`))
 

@@ -4,10 +4,12 @@ const initialState = {
     user: {},
     cart: [],
     total: [],
-    gallery: []
+    gallery: [],
+    tickets: []
   };
 
 
+  const TICKETS = "TICKETS";
   const GALLERY = "GALLERY";
   const EMPTY = "EMPTY";
   const QUANTITY = 'QUANTITY';
@@ -20,7 +22,7 @@ const initialState = {
 export default function reducer(state=initialState, action) {
     switch (action.type) {
         case LOGIN:
-            return Object.assign({}, state, { user: action.payload });
+            return Object.assign({}, state, {user: action.payload });
         case ADD_ITEM:
             return Object.assign({}, state, {cart: action.payload });
         case DELETE_ITEM:
@@ -35,6 +37,8 @@ export default function reducer(state=initialState, action) {
             return Object.assign({}, state, {cart: []});
         case GALLERY:
             return Object.assign({}, state, {gallery: action.payload}); 
+        case TICKETS:
+            return Object.assign({}, state, {tickets: action.payload});
         default:
             return state
     }
@@ -92,5 +96,12 @@ export function addGallery(gallery) {
     return {
         type: GALLERY,
         payload: gallery
+    }
+}
+
+export function addTicket(tickets) {
+    return {
+        type: TICKETS,
+        payload: tickets
     }
 }

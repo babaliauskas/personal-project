@@ -1,6 +1,5 @@
 import React from 'react';
 import Navigation from '../../Navigation/Navigation';
-import './Store.css';
 import axios from 'axios';
 import {addItem} from '../../../duck/reducer';
 import {connect} from 'react-redux';
@@ -31,7 +30,7 @@ class Store extends React.Component {
     handleAddCart = (img, price) => {
         let bla = {img, price}
         axios.post('/api/cart', bla )
-        .then(response => {
+        .then(response => { 
             this.props.addItem(response.data)
             const toast = swal.mixin({
                 toast: true,
@@ -39,13 +38,12 @@ class Store extends React.Component {
                 heightAuto: false,
                 showConfirmButton: false,
                 background: 'rgb(82, 194, 8)',
-                imageUrl: 'https://vignette.wikia.nocookie.net/township/images/6/68/Thumb-up-smiley.png/revision/latest?cb=20150808121702',
                 timer: 1000
               });
               
               toast({
                 type: 'success',
-                title: 'Item added!'
+                title: 'Item added!',
               })
         }).catch(err => console.log(err))
 

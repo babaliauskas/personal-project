@@ -6,7 +6,7 @@
 }
 
 .home {
-    background-image: url(../../img/bla.png);
+    background-image: url(../img/bla.png);
     width: 100vw;
     height: 100vh;
     background-position: 0 0;
@@ -154,7 +154,7 @@
 }
 
 .twilio-text textarea {
-    width: 90%;
+    width: 100%;
     border: 1px solid black;
     border-radius: 10px;
     outline: none;
@@ -164,7 +164,7 @@
 }
 
 .twilio-text input {
-    width: 90%;
+    width: 100%;
     padding: 5px;
     margin-bottom: 10px;
     border: 1px solid black;
@@ -175,7 +175,7 @@
 }
 
 .twilio button {
-    width: 90%;
+    width: 100%;
     margin-top: 10px;
     height: 30px; 
     border-radius: 10px;

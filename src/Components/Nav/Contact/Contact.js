@@ -1,6 +1,5 @@
 import React from 'react';
 import Navigation from '../../Navigation/Navigation'
-import './Contact.css'
 import dino19 from '../../../img/19.png';
 import axios from 'axios';
 

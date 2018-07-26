@@ -15,8 +15,8 @@ import Mamenchisaurus from './Components/Dinosaurs/Mamenchisaurus/Mamenchisaurus
 import Stegosaurus from './Components/Dinosaurs/Stegosaurus/Stegosaurus';
 import Minmi from './Components/Dinosaurs/Minmi/Minmi';
 import FullInfo from './Components/FullInfo/Fullinfo';
-import Support from './Components/Support/Support';
 import Photo from './Components/Nav/Photos/Photo';
+import YourTickets from './Components/Nav/Tickets/YourTickets';
 
 
 export default (
@@ -36,7 +36,7 @@ export default (
         <Route path='/stegosaurus' component={Stegosaurus} />
         <Route path='/minmi' component={Minmi} />
         <Route path='/info/:id' component={FullInfo} />
-        <Route path='/support' component={Support} />
         <Route path='/photo' component={Photo} />
+        <Route path='/yourtickets' component={YourTickets} />
     </Switch>
 )

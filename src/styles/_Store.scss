@@ -8,7 +8,7 @@
 }
 
 .hm {
-    background-image: linear-gradient( rgba(0, 0, 0, 0.678), rgba(0, 0, 0, 0.678) ), url(../../../img/bla.png);
+    background-image: linear-gradient( rgba(0, 0, 0, 0.678), rgba(0, 0, 0, 0.678) ), url(../img/bla.png);
     background-size: cover;
     min-height: 100vh;
     height: 100%;
@@ -45,8 +45,13 @@
     padding: 20px;
 }
 
+.store-select {
+    display: flex;
+    justify-content: space-around;
+}
+
 .store-select select {
-    margin-top: 20px;
+    margin: 20px auto;
     padding: 7px;
     font-size: 16px;
     outline: none;
