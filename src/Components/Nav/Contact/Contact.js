@@ -87,7 +87,7 @@ export default class Contact extends React.Component {
                         placeholder='Name' 
                         name='name' 
                         onChange={(e) => this.handleChange(e)} 
-                        value={this.state.name}/>
+                        />
                 </div>
 
                 <div>
@@ -97,7 +97,7 @@ export default class Contact extends React.Component {
                         placeholder='Email'
                         name='email' 
                         onChange={this.handleChange} 
-                        value={this.state.email}/>
+                        />
                 </div>
 
                 <div>
@@ -110,7 +110,7 @@ export default class Contact extends React.Component {
                         placeholder='Message' 
                         name='message' 
                         onChange={this.handleChange} 
-                        value={this.state.message}></textarea>
+                        ></textarea>
                 </div>
 
                 <div>
