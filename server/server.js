@@ -26,6 +26,8 @@ const express = require("express"),
     app.use(busboyBodyParser());
     app.use(cors());
 
+    app.use(express.static(`${__dirname}/../build`))
+
 
 ////////////////////////////        TWILIO
 
