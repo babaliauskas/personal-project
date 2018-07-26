@@ -31,14 +31,6 @@ export default class Contact extends React.Component {
        
     }
 
-    handleClear = () => {
-        this.setState({
-            name: '',
-            email: '',
-            message:''
-        })
-    }
-
     render(){
     return (
         <div className='contact'>
@@ -87,7 +79,7 @@ export default class Contact extends React.Component {
                         placeholder='Name' 
                         name='name' 
                         onChange={(e) => this.handleChange(e)} 
-                        />
+                        value={this.state.name}/>
                 </div>
 
                 <div>
@@ -97,7 +89,7 @@ export default class Contact extends React.Component {
                         placeholder='Email'
                         name='email' 
                         onChange={this.handleChange} 
-                        />
+                        value={this.state.email}/>
                 </div>
 
                 <div>
@@ -110,7 +102,7 @@ export default class Contact extends React.Component {
                         placeholder='Message' 
                         name='message' 
                         onChange={this.handleChange} 
-                        ></textarea>
+                        value={this.state.message}></textarea>
                 </div>
 
                 <div>
