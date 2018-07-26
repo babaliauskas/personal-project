@@ -176,7 +176,7 @@ app.post('/api/form', (req,res) => {
 
         let mailOptions = {
             from: req.body.email,
-            to: process.env.EMAIL,
+            to: `${process.env.EMAIL}`,
             subject: 'New Message',
             text: req.body.message,
         }

@@ -85,7 +85,7 @@ class Cart extends React.Component {
 
             let list = this.props.cart.map( (product, i) => {
                 
-                return (
+                return ( 
                     <div key={product.id} className='items' >
                         <img className='cart-img' src={product.img} alt=""/>
                         <h4>${ (product.price * 0.8).toFixed(2) }</h4>

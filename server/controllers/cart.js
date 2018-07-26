@@ -12,7 +12,7 @@ module.exports = {
     get: (req, res) => {
         const db = req.app.get('db')
 
-        db.dinosaurs_cart()
+        db.dinosaurs_cart([+req.session.user.id])
         .then(response => res.status(200).send(response))
         .catch(err => console.log(err))
     },

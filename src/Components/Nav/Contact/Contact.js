@@ -19,18 +19,16 @@ export default class Contact extends React.Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
-    async handleSubmit(e) {
-        e.preventDefault()
-
-        const { name, email, message } = this.state
-
-        const form = await axios.post('/api/form', {
-            name,
-            email,
-            message
+    async handleSubmit (e) {
+       e.preventDefault()
+        await axios.post('/api/form', this.state )
+        this.setState({
+            name: '',
+            email: '',
+            message: '',
         })
-       
     }
+
 
     render(){
     return (
@@ -38,7 +36,7 @@ export default class Contact extends React.Component {
             <Navigation/>
 
 
-            <form  >
+            <form onSubmit={this.handleSubmit}>
                 
                 {/* <div>
                     <label for='name'>Name</label>
@@ -107,7 +105,7 @@ export default class Contact extends React.Component {
                 </div>
 
                 <div>
-                    <button onClick={this.handleSubmit} className='send'>
+                    <button className='send'>
                         CONTACT US
                     </button>
                 </div>
