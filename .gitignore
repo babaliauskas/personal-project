@@ -11,6 +11,8 @@
 
 /src/Components/WeatherApi
 
+/sqlList
+
 # misc
 .DS_Store
 .env.local

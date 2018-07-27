@@ -6,6 +6,7 @@
 @import url("https://fonts.googleapis.com/css?family=Fredoka+One");
 @import url("https://fonts.googleapis.com/css?family=Song+Myung");
 @import url("https://fonts.googleapis.com/css?family=Song+Myung");
+@import url("https://fonts.googleapis.com/css?family=Song+Myung");
 .miniinfo {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/bla.png);
   width: 100vw;
@@ -1296,7 +1297,8 @@ a {
   width: 100vw;
   height: 100vh;
   background-size: cover;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  font-family: 'Song Myung', serif; }
 
 .buy-your {
   display: flex;
@@ -1384,7 +1386,10 @@ a {
   padding: 10px; }
 
 .sponsor {
+  margin-left: 2%;
   display: flex;
+  width: 70%;
+  justify-content: space-between;
   align-items: center;
   position: absolute;
   bottom: 40px;
@@ -1395,16 +1400,18 @@ a {
   width: 60px; }
 
 .random-num {
-  font-size: 20px;
   position: absolute;
-  bottom: 50px;
-  right: 30%; }
+  bottom: 35%;
+  right: 31%;
+  width: 30%;
+  display: flex;
+  justify-content: space-between; }
 
-.random-num2 {
-  display: flex; }
-
-.as {
-  margin-right: 30px; }
+.random-num input {
+  font-size: 22px;
+  padding: 5px;
+  margin-right: 20px;
+  width: 50%; }
 
 .bybis {
   position: relative;
@@ -1448,9 +1455,7 @@ a {
   color: #f39b17;
   cursor: pointer; }
 
-.d {
-  color: white;
-  cursor: pointer; }
-
-.d:hover {
-  color: #f39b17; }
+.ticket-holder {
+  position: absolute;
+  bottom: 30%;
+  left: 40%; }

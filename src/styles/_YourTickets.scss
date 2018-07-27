@@ -14,12 +14,9 @@
     color: rgb(243, 155, 23);
     cursor: pointer;
 }
-.d {
-    color: white;
-    cursor: pointer;
-}
 
-.d:hover {
-    color: rgb(243, 155, 23);
+.ticket-holder {
+    position: absolute;
+    bottom: 30%;
+    left: 40%;
 }
-

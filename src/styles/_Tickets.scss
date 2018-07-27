@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Song+Myung');
 .tickets {
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../img/bla.png);
     width: 100vw;
     height: 100vh;
     background-size: cover;
     background-repeat: no-repeat;
+    font-family: 'Song Myung', serif;
 }
 
 .buy-your {
@@ -106,7 +108,10 @@
 }
 
 .sponsor {
+    margin-left: 2%;
     display: flex;
+    width: 70%;
+    justify-content: space-between;
     align-items: center;
     position: absolute;
     bottom: 40px;
@@ -119,18 +124,21 @@
 }
 
 .random-num {
-    font-size: 20px;
     position: absolute;
-    bottom: 50px;
-    right: 30%;
+    bottom: 35%;
+    right: 31%;
+    width: 30%;
+    display: flex;
+    justify-content: space-between
 }
 
-.random-num2 {
-    display: flex
+.random-num input {
+    font-size: 22px;
+    padding: 5px;
+    margin-right: 20px;
+    width: 50%;
 }
-.as {
-    margin-right: 30px;
-}
+
 
 .bybis {
     position: relative;
@@ -141,7 +149,6 @@
 
 .tickets-button {
     padding: 10px;
-    
     width: 30%;
     font-size: 24px;
     border-radius: 10px;

@@ -15,7 +15,9 @@ class Tickets extends React.Component {
       this.state = {
         startDate: moment(),
         days: 1,
-        price: 850
+        price: 850,
+        name: '',
+        lastname: '',
       };
       this.handleChange = this.handleChange.bind(this);
     }
@@ -30,8 +32,8 @@ class Tickets extends React.Component {
         this.setState({ days: val, price: 850 * val })
     }
 
-    handleTickets = (daypass, startingdate, price) => {
-        let tickets = {daypass, startingdate, price}
+    handleTickets = (daypass, startingdate, price, name, lastname) => {
+        let tickets = {daypass, startingdate, price, name, lastname}
         axios.post('/api/tickets', tickets)
         .then(response => {
             this.props.addTicket(response.data)
@@ -42,22 +44,20 @@ class Tickets extends React.Component {
     onToken = (token) => {
         token.card = void 0;
         axios.post('/api/payment', { token, amount: this.state.price } )
-          .then( () => this.props.history.push('yourtickets'), this.handleTickets(this.state.days, this.state.startDate, this.state.price) ) 
+          .then( () => this.props.history.push('yourtickets'), this.handleTickets(this.state.days, this.state.startDate, this.state.price, this.state.name, this.state.lastname) ) 
           .catch(err => console.log(err));
     }
+
+    handleName = val => {
+        this.setState({ name: val })
+    }
     
+    handleLastName = val => {
+        this.setState({ lastname: val })
+    }
 
     render() {
         console.log(this.state.price)
-        let random = Math.floor((Math.random() * 10000000 ) + 1)
-        let random2 = Math.floor((Math.random() * 100000 ) + 1)
-        let random3 = Math.floor((Math.random() * 1000 ) + 1)
-        let random4 = Math.floor((Math.random() * 10000000 ) + 1)
-        let random5 = Math.floor((Math.random() * 1000 ) + 1)
-        let random6 = Math.floor((Math.random() * 1000 ) + 1)
-        let random7 = Math.floor((Math.random() * 100000 ) + 1)
-        let random8 = Math.floor((Math.random() * 100000 ) + 1)
-
         return (
           <div className='tickets'>
               <Navigation />
@@ -90,14 +90,23 @@ class Tickets extends React.Component {
                     <img src="https://s3-us-west-1.amazonaws.com/l.babaliauskas/Starbucks.png" alt="starbucks"/>
                     <img src="https://s3-us-west-1.amazonaws.com/l.babaliauskas/samsung.png" alt="samsung"/>
                     <img src="https://s3-us-west-1.amazonaws.com/l.babaliauskas/cc.png" alt="cocacola"/>
+                    <img src="https://s3-us-west-1.amazonaws.com/l.babaliauskas/disney.png" alt="disney"/>
+                    <img src="https://s3-us-west-1.amazonaws.com/l.babaliauskas/GGLogo.png" alt="GGLogo"/>
+                    <img src="https://s3-us-west-1.amazonaws.com/l.babaliauskas/mms_racing.png" alt="M&M"/>
                 </div>
 
                 <div className='random-num'>
-                    <h3>{random}-{random2}-{random4}-{random3}</h3>
-                    <div className='random-num2'>
-                        <h3 className='as'>{random5}-{random2}</h3>
-                        <h3>{random6}-{random7}-{random8}</h3>
-                    </div>
+                   <input 
+                        type="text"
+                        placeholder='Name'
+                        onChange={e => this.handleName(e.target.value)}
+                        required
+                        />
+                    <input 
+                        type="text"
+                        placeholder='Last name'
+                        onChange={ e => this.handleLastName(e.target.value)}
+                        required/>
                 </div>
 
                 <div className='barcode'>
