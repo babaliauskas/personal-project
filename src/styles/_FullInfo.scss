@@ -56,10 +56,14 @@ td {
 
 .fullinfo-button {
     position: relative;
-    top: 70px;
+    top: 0px;
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
+}
+
+.fullinfo-button img {
+    width: 150px;
 }
 
 .fullinfo-button button {

@@ -71,6 +71,7 @@ export default class FullInfo extends Component {
                         {newDinosaur}
 
             <div className='fullinfo-button'>
+                <img src="https://s3-us-west-1.amazonaws.com/l.babaliauskas/zzzzz.png" alt="zzz"/>
                 <button onClick={() => this.props.history.goBack()} className='fullinfo-back'>Back </button>
             </div>
         </section> 
