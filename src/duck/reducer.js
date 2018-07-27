@@ -5,7 +5,7 @@ const initialState = {
     cart: [],
     total: [],
     gallery: [],
-    tickets: []
+    tickets: [],
   };
 
 
@@ -65,10 +65,10 @@ export function deleteItem(dlt) {
     }
 }
 
-export function getCart(list) {
+export function getCart(cart) {
     return {
         type: CART,
-        payload: list
+        payload: cart
     }
 }
 
