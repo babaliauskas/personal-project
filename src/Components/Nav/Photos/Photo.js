@@ -67,7 +67,15 @@ import ImageGallery from './ImageGallery';
 
             axios.post('/api/gallery', {url} )
             .then( response => {
-                this.props.addGallery(response.data)
+
+              let images = []
+                for ( let i=0; i<response.data.length; i++){
+                images.push({
+                  original: response.data[i].url,
+                  thumbnail: response.data[i].url
+                });
+              }
+                this.props.addGallery(images)
             })
         })
         .catch( err => {
@@ -215,6 +223,7 @@ import ImageGallery from './ImageGallery';
     
 
     render(){
+      console.log(this.props.gallery)
         // console.log(this.state.images)
 
         // let img = this.props.gallery.map( (e,i) => {
