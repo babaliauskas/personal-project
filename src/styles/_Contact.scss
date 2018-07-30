@@ -9,7 +9,8 @@
 
 .email-box {
     background-color: rgb(76, 146, 44);
-    width: 600px;
+    width: 40%;
+    min-width: 542px;
     height: 430px;
     margin: 0 auto;
     border-radius: 20px;
@@ -64,6 +65,10 @@
     font-family: 'Song Myung', serif;
     cursor: pointer;
 }
+textarea {
+    width: 230px;
+    height: 150px;
+}
 
 .send:active {
     border: none;
@@ -75,5 +80,40 @@
     right: 30px;
     width: 250px;
     height: auto;
+}
+
+@media (max-width: 1024px) {
+    .email-box {
+        width: 70%;
+        padding-top: 10px;
+        position: relative;
+        left: 0%;
+        margin-top: 80px;
+        margin-bottom: 30px;
+        transform: translate( 0%)
+    }
+}
+
+@media (max-width: 415px) {
+    .contact {
+        min-height: 100vh;
+        height: 100%;  
+    }
+    .email-box {
+        min-width: 0px;
+        width: 90%;
+        padding-top: 10px;
+        position: relative;
+        left: 0%;
+        margin-top: 80px;
+        margin-bottom: 30px;
+        transform: translate( 0%)
+    }
+    .contact-input-div {
+        margin: 0 auto;
+    }
+    .contact-img {
+        display: none;
+    }
 }
 

@@ -85,7 +85,7 @@ class Navigation extends Component {
 
 
   render() {
-    
+    console.log(this.state.toggleNav)
 
     let neaw = this.state.list.filter( (e, i) => i===0 || i === 7 || i===15 || i===23 || i===31 || i===39)
 

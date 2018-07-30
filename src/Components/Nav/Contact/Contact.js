@@ -71,7 +71,7 @@ export default class Contact extends React.Component {
 
                 <button className='send'>Submit</button> */}
             <div className='email-box'>
-                <div>
+                <div className='contact-input-div'>
                     <input 
                         className='contact-input' 
                         type="text" 
@@ -81,7 +81,7 @@ export default class Contact extends React.Component {
                         value={this.state.name}/>
                 </div>
 
-                <div>
+                <div className='contact-input-div'>
                     <input 
                         className='contact-input' 
                         type="text" 
@@ -91,20 +91,20 @@ export default class Contact extends React.Component {
                         value={this.state.email}/>
                 </div>
 
-                <div>
+                <div className='contact-input-div'>
                     <textarea 
                         className='contact-text'
                         name="text" 
                         id="" 
-                        cols="30" 
-                        rows="10" 
+                        // cols="30" 
+                        // rows="10" 
                         placeholder='Message' 
                         name='message' 
                         onChange={this.handleChange} 
                         value={this.state.message}></textarea>
                 </div>
 
-                <div>
+                <div className='contact-input-div'>
                     <button className='send'>
                         CONTACT US
                     </button>

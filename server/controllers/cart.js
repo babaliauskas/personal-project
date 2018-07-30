@@ -39,7 +39,7 @@ module.exports = {
         const db = req.app.get('db')
         const { id, quantity } = req.params
 
-        db.update_quantity([ id, quantity ])
+        db.update_quantity([ id, quantity, +req.session.user.id ])
         .then(response => res.status(200).send(response))
         .catch(err => console.log('aaaaaaaaaaaaaaaaaa', err))
     },

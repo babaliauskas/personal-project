@@ -48,19 +48,20 @@ export default class Home extends React.Component {
     }
 
     render(){
+    
         const { text } = this.state;
     return (
         <div className='home'>
             <Navigation/>
             <section className='images'>
-                <Link to='/centrosaurus'><img className='dino1 img' src={dino1} alt="Centrosaurus" /></Link> 
-                <Link to='/stegosaurus'><img className='dino2 img' src={dino2} alt="Stegosaurus"/> </Link>
-                <Link to='/daspletosaurus'><img className='dino5 img' src={dino5} alt="Daspletosaurus"/> </Link>
-                <Link to='/mamenchisaurus'><img className='dino8 img' src={dino8} alt="Mamenchisaurus"/> </Link>
-                <Link to='/gargoyleosaurus'><img className='dino4 img' src={dino4} alt="Gargoyleosaurus"/> </Link>
-                <Link to='/allosaurus'><img className='dino16 img' src={dino16} alt="Allosaurus"/> </Link>
-                <Link to='/anchiceratops'><img className='dino17 img' src={dino17} alt="Anchiceratops"/> </Link>
-                <Link to='/minmi'><img className='dino18 img' src={dino18} alt="Minmi"/> </Link>
+                <Link className='home-mobile' to='/centrosaurus'><img className='dino1 img' src={dino1} alt="Centrosaurus" /></Link> 
+                <Link className='home-mobile' to='/stegosaurus'><img className='dino2 img' src={dino2} alt="Stegosaurus"/> </Link>
+                <Link className='home-mobile' to='/daspletosaurus'><img className='dino5 img' src={dino5} alt="Daspletosaurus"/> </Link>
+                <Link className='home-mobile' to='/mamenchisaurus'><img className='dino8 img' src={dino8} alt="Mamenchisaurus"/> </Link>
+                <Link className='home-mobile' to='/gargoyleosaurus'><img className='dino4 img' src={dino4} alt="Gargoyleosaurus"/> </Link>
+                <Link className='home-mobile' to='/allosaurus'><img className='dino16 img' src={dino16} alt="Allosaurus"/> </Link>
+                <Link className='home-mobile' to='/anchiceratops'><img className='dino17 img' src={dino17} alt="Anchiceratops"/> </Link>
+                <Link className='home-mobile' to='/minmi'><img className='dino18 img' src={dino18} alt="Minmi"/> </Link>
                 <img onClick={this.handleEgg} className={this.state.egg ? 'egg' : 'egg-none'} src={egg} alt=""/>
                 <img className={this.state.egg ? 'egg2' : 'egg2-show'} src={egg2} alt=""/>
             </section>
