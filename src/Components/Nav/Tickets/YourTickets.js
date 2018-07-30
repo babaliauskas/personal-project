@@ -44,6 +44,9 @@ class YourTickets extends React.Component {
                     <img src="https://s3-us-west-1.amazonaws.com/l.babaliauskas/Starbucks.png" alt="starbucks"/>
                     <img src="https://s3-us-west-1.amazonaws.com/l.babaliauskas/samsung.png" alt="samsung"/>
                     <img src="https://s3-us-west-1.amazonaws.com/l.babaliauskas/cc.png" alt="cocacola"/>
+                    <img src="https://s3-us-west-1.amazonaws.com/l.babaliauskas/disney.png" alt="disney"/>
+                    <img src="https://s3-us-west-1.amazonaws.com/l.babaliauskas/GGLogo.png" alt="GGLogo"/>
+                    <img src="https://s3-us-west-1.amazonaws.com/l.babaliauskas/mms_racing.png" alt="M&M"/>
                 </div>
 
                 <div className='ticket-holder'>

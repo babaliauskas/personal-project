@@ -1436,7 +1436,8 @@ a {
 
 .barcode img {
   width: 90%;
-  padding-top: 20px; }
+  padding-top: 25px;
+  margin-left: 20px; }
 
 .date-picker {
   padding-left: 80px;
