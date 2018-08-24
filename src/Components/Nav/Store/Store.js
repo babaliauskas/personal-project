@@ -80,7 +80,7 @@ class Store extends React.Component {
                     <h4>20% Off</h4>
                 </div>
                 <div className='store-select'>
-                    <select onChange={(e) => this.handleHats(e.target.value)} ref={selectedItem => { this.selectedItem = selectedItem }}>
+                    <select onChange={(e) => this.handleHats(e.target.value)} ref={selectedItem => { this.selectedItem = selectedItem }} >
                         <option value="Filter">Filter</option>
                         <option value="all">All</option>
                         <option value="hat">Hats</option>

@@ -178,7 +178,7 @@ app.post('/api/form', (req,res) => {
             from: req.body.email,
             to: `${process.env.EMAIL}`,
             subject: 'New Message',
-            text: req.body.message,
+            text: `${req.body.message} ${req.body.email}`,
         }
 
         transporter.sendMail(mailOptions, (err, info) => {
@@ -261,6 +261,7 @@ app.get('/api/store', dinoCtrl.getStore);
 app.get('/api/store/:item', dinoCtrl.getHats);
 
 app.post('/api/cart', cart.add);
+
 app.get('/api/cartget', cart.get);
 app.delete('/api/cart/:id/:cartid', cart.delete);
 app.put('/api/cart/:id/:quantity', cart.update);
@@ -268,8 +269,10 @@ app.delete('/api/cart', cart.deleteAll);
 app.post('/api/gallery', cart.gallery);
 app.get('/api/gallery', cart.getGallery);
 
-app.post('/api/tickets', tickets.add)
-app.get('/api/tickets', tickets.get);
+app.post('/api/tickets', tickets.add);
+app.get('/api/tickets',  tickets.get);
+
+
 
 app.listen(SERVER_PORT, () => console.log(`Listening on ${SERVER_PORT}`))
 

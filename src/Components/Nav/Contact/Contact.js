@@ -37,40 +37,8 @@ export default class Contact extends React.Component {
 
 
             <form onSubmit={this.handleSubmit}>
-                
-                {/* <div>
-                    <label for='name'>Name</label>
-                    <input 
-                        className='contact-input' 
-                        placeholder='Name'
-                        type="text"
-                        name='name'
-                        onChange={this.handleChange}
-                        />
-                </div>
-
-                <div>
-                    <label for='email'>Email</label>
-                    <input 
-                        className='contact-input' 
-                        type="text"
-                        placeholder='Email'
-                        type='email'
-                        name='email'
-                        onChange={this.handleChange}
-                        />
-               </div>
-               <div>
-                    <textarea for='name'>Message</textarea>
-                    <input
-                        type='textarea'
-                        name='message'
-                        onChange={this.handleChange}
-                        />
-                </div>               
-
-                <button className='send'>Submit</button> */}
             <div className='email-box'>
+            <div className='xa' >
                 <div className='contact-input-div'>
                     <input 
                         className='contact-input' 
@@ -96,8 +64,6 @@ export default class Contact extends React.Component {
                         className='contact-text'
                         name="text" 
                         id="" 
-                        // cols="30" 
-                        // rows="10" 
                         placeholder='Message' 
                         name='message' 
                         onChange={this.handleChange} 
@@ -108,6 +74,7 @@ export default class Contact extends React.Component {
                     <button className='send'>
                         CONTACT US
                     </button>
+                </div>
                 </div>
                     <img className='contact-img' src={dino19} alt=""/>
 

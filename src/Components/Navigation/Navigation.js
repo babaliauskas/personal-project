@@ -73,7 +73,6 @@ class Navigation extends Component {
   }
 
   getWeather = async (e) => {
-    console.log(process.env.REACT_APP_WEATHER_API_KEY)
     e.preventDefault();
     const api_call = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Barcelona,ES&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
     const data = await api_call.json();
