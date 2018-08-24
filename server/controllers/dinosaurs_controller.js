@@ -11,9 +11,9 @@ module.exports = {
     getStore: (req,res) => {
         const db = req.app.get('db');
         
-        const { category } = req.query
-        // db.storeGetAll()
-        db.asquery([category])
+        // const { category } = req.query
+        db.storeGetAll()
+        // db.asquery([category])
         .then(store => res.status(200).send(store))
         .catch(err => console.log(err) )
     },
