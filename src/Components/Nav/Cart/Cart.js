@@ -56,13 +56,12 @@ class Cart extends React.Component {
                 heightAuto: false,
                 showConfirmButton: false,
                 background: 'rgb(82, 194, 8)',
-                imageUrl: 'http://www.stickpng.com/assets/images/589701f9cba9841eabab6105.png',
                 timer: 3000
               });
               
               toast({
                 type: 'success',
-                title: 'Item added!'
+                title: 'Thank you for purchasing!'
               })
           }).then( () => this.props.history.push('store') );
 
