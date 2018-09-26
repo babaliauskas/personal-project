@@ -21,8 +21,9 @@ import YourTickets from './Components/Nav/Tickets/YourTickets';
 
 export default (
     <Switch>
-        <Route exact path='/' component={Login} />
+        <Route exact path='/' component={Home} />
         <Route path='/home' component={Home} />
+        <Route path='/login' component={Login} />
         <Route path='/cart' component={Cart} />
         <Route path='/store' component={Store} />
         <Route path='/contact' component={Contact} />

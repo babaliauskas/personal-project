@@ -134,6 +134,7 @@ class Navigation extends Component {
                 <NavLink activeStyle={{ color: 'rgb(243, 155, 23)' }} to='/tickets' ><li>Tickets</li></NavLink>
                 <NavLink activeStyle={{ color: 'rgb(243, 155, 23)' }} to='/cart' ><li>Cart</li></NavLink>
                 <NavLink activeStyle={{ color: 'rgb(243, 155, 23)' }} to='/photo' ><li>Photo</li></NavLink>
+                <NavLink activeStyle={{ color: 'rgb(243, 155, 23)' }} to='/login' ><li>Login</li></NavLink>
                 <a href={`${window.origin}/api/logout`} ><li>Logout</li></a>
             </ul>
         </div>

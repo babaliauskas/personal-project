@@ -1359,6 +1359,12 @@ a {
   animation: fadein 1s;
   z-index: 9999; }
 
+.login-pls {
+  color: white;
+  font-size: 26px;
+  text-align: center;
+  margin-top: 20px; }
+
 @keyframes fadein {
   from {
     opacity: 0; }
@@ -1516,7 +1522,7 @@ a {
 
 .yourtickets {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/bla.png);
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   height: 100%;
   background-size: cover; }

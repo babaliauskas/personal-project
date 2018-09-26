@@ -88,7 +88,7 @@ export default class Home extends React.Component {
                     </div>
                 </div>
 
-                <button onClick={this.handleEgg2} className={this.state.egg3 ? 'chat' : 'chat2'} >Send Message</button>
+                <button onClick={this.handleEgg2} className={this.state.egg3 ? 'chat' : 'chat2'} >Send Text Message</button>
 
         </div>
     )
