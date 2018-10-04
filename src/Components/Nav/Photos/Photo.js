@@ -13,7 +13,6 @@ import ImageGallery from './ImageGallery';
     constructor() {
         super()
         this.state = {
-         
           url: '',
           value: '',   
           selected: null,        
@@ -223,7 +222,7 @@ import ImageGallery from './ImageGallery';
     
 
     render(){
-      console.log(this.props.gallery)
+    
         // console.log(this.state.images)
 
         // let img = this.props.gallery.map( (e,i) => {

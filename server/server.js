@@ -159,8 +159,6 @@ app.get('/api/logout', (req, res) => {
 
 
 app.post('/api/form', (req,res) => {
-    
-
         let transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
             port: 587,
@@ -230,7 +228,6 @@ app.get('/api/upload', (req, res) => {
 
 app.get('/api/upload/get', async (req,res) => {
     try {
-
         aws.config.setPromisesDependency();
 
         aws.config.update({

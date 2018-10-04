@@ -12,6 +12,7 @@ import dino17 from '../../img/17.png';
 import egg from '../../img/10.png';
 import egg2 from '../../img/7.png';
 import axios from 'axios';
+import swal from 'sweetalert2'
 
 
 export default class Home extends React.Component {
@@ -33,6 +34,11 @@ export default class Home extends React.Component {
         console.log(text)
         axios.get(`/api/send-text?recipient=${text.recipient}&number=${text.number}&textmessage=${text.textmessage}`)
         .catch(err => console.log(err))
+        swal(
+            'Thank you!',
+            'Your message has been sent!',
+            'success'
+          )
         this.setState({ 
             textmessage: '',
             number: ''
@@ -72,14 +78,16 @@ export default class Home extends React.Component {
                         <input 
                             value={text.number}
                             placeholder='Your Number'
-                            onChange={e => this.setState({ text: { ...text, number: e.target.value } })} />
+                            onChange={e => this.setState({ text: { ...text, number: e.target.value } })} 
+                            value={this.state.number} />
 
                         <textarea 
                             cols='35'
                             rows='5'
                             value={text.textmessage} 
                             placeholder='Message'
-                            onChange={e => this.setState({ text: { ...text, textmessage: e.target.value } })}>
+                            onChange={e => this.setState({ text: { ...text, textmessage: e.target.value } })}
+                            value={this.state.textmessage}>
                         </textarea>  
                     </div>
 
